@@ -314,10 +314,10 @@
     .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
     .grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 
-    /* 외부 사이트 5대 바로가기 바 (모바일/PC 공통 균등 5분할 & 화면 이탈 원천 차단) */
+    /* 외부 사이트 6대 바로가기 바 (모바일 3x2 균등 그리드 / PC 6등분 1열 & 화면 이탈 원천 차단) */
     .header-quick-links {
       display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 0.35rem;
       width: 100%;
     }
@@ -361,9 +361,12 @@
       .sm\:h-9 { height: 2.25rem; }
       .sm\:w-20 { width: 5rem; }
       .sm\:h-20 { height: 5rem; }
+      .header-quick-links {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+      }
       .site-link-btn {
         font-size: 12px;
-        padding: 0.45rem 0.5rem;
+        padding: 0.45rem 0.4rem;
         letter-spacing: -0.01em;
       }
       .site-link-btn .ext-arrow {
@@ -635,9 +638,13 @@
       display: none !important;
     }
 
+    body.mobile-ui-mode .header-quick-links {
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    }
+
     body.mobile-ui-mode .site-link-btn {
-      font-size: 11px;
-      padding: 0.38rem 0.1rem;
+      font-size: 11.5px;
+      padding: 0.4rem 0.25rem;
     }
 
     /* 상세 설명 블록 기본 스타일 (인라인 strong 태그가 가로 열로 쪼개지지 않도록 반드시 display: block 유지) */
@@ -671,6 +678,14 @@
   </div>
 
   <div class="app-shell-container max-w-5xl mx-auto flex flex-col gap-4">
+    <noscript>
+      <div class="ui-card ui-card-max p-3.5 flex flex-col gap-1.5 text-xs">
+        <strong class="font-pop text-sm text-red-dark">⚠️ 아이폰/모바일에서 '.html 파일'을 직접 열면 애플(iOS) 보안 정책상 버튼과 타이머가 작동하지 않습니다.</strong>
+        <p class="text-main leading-relaxed">
+          카카오톡 파일 첨부나 아이폰 '파일(Files)' 앱의 문서 미리보기(Quick Look)는 자바스크립트(타이머·버튼)를 원천 차단하고 외부 링크(<code>&lt;a&gt;</code>)만 허용합니다. <strong>파일 대신 웹 배포 주소(<code>https://...</code> 링크)로 접속</strong>하셔야 아이폰 사파리에서 모든 버튼과 타이머가 100% 작동합니다.
+        </p>
+      </div>
+    </noscript>
 
     
     <!-- [모바일 전용 상단 고정 미니 타이머 도크] 모바일 UI 모드에서만 상단에 고정 표시 -->
@@ -793,6 +808,15 @@
             <span>트릭컬 노트</span><span class="ext-arrow">↗</span>
           </a>
           <a
+            href="https://lsbim.github.io/foods/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="site-link-btn ui-btn-neutral"
+            title="트릭컬 연회장 (사도별 호불호 음식 도감)"
+          >
+            <span>트릭컬 연회장</span><span class="ext-arrow">↗</span>
+          </a>
+          <a
             href="https://game.naver.com/lounge/Trickcal/board"
             target="_blank"
             rel="noopener noreferrer"
@@ -820,18 +844,18 @@
         <div id="thuBriefingCard" class="ui-subbox p-3 sm:p-3.5 flex flex-col justify-between gap-2">
           <div class="flex items-center justify-between gap-1.5 min-w-0">
             <span id="thuBriefingHeaderLabel" class="text-xs font-bold text-muted truncate">다가오는 10/29(목) 업데이트 브리핑</span>
-            <span id="thuCycleBadge" class="ui-tag ui-tag-inferred shrink-0">10/29(목) · 일부 확인 + 주기 추론</span>
+            <span id="thuCycleBadge" class="ui-tag ui-tag-active shrink-0">10/29(목) · 공식 공지 확정</span>
           </div>
           <div>
             <strong id="thuUpdateTitle" class="font-pop text-sm sm:text-base text-main block">
-              [공식] 버터 복각 픽업 / [주기 추론] 사복패스·스토리 8-B
+              [공식 확정] 버터 픽업 · [버터] 사복 패스 · 시즌3 8챕터 후반
             </strong>
             <div id="thuUpdateCompactSummary" class="text-xs text-muted mt-1 font-semibold">
-              • 공식: 버터 픽업(~11/5) 확인 · 추론: 테극 2주차 스토리/사복패스 가능성
+              • 공식 확정: 버터 픽업(~11/5) · [버터] 사복패스(~11/12) · 스토리 시즌3 8챕터(8~15화) · 대충돌[광기]
             </div>
             <div id="thuUpdateDetail" class="detail-desc-block text-xs text-muted mt-1.5 leading-relaxed">
-              <div><strong class="text-green-dark">• 공식 확인:</strong> 10/27 라운지 사전 안내로 <strong>「버터」 픽업 모집(~11/5)</strong> 진행이 확인되었습니다.</div>
-              <div><strong class="text-sky-dark">• 로테이션 추론(참고):</strong> 코페 테마극장 2주차 및 약 4주 간격 사복 패스 흐름상 <strong>메인 스토리 후반부(8-B) 또는 신규 사복 패스</strong>가 함께 포함될 가능성이 있습니다.</div>
+              <div><strong class="text-green-dark">• 공식 확정(10/28 공지):</strong> <strong>「버터」 픽업(~11/5)</strong>, <strong>[버터] 사복 패스(별밤 산책 대장, ~11/12)</strong>, <strong>메인 스토리 시즌3 8챕터(8~15화) &amp; 시즌1 보너스(1~5화)</strong>가 확정되었습니다.</div>
+              <div><strong class="text-sky-dark">• 동시 진행:</strong> <strong>차원 대충돌 [광기](~11/5)</strong> 및 <strong>시온 재개봉 테극 〈스스로 선택한 어둠의 길〉(~11/5)</strong>이 함께 오픈됩니다.</div>
             </div>
           </div>
           <div class="pt-1.5 border-t flex items-center justify-between gap-1 text-[11px] text-main">
@@ -851,14 +875,14 @@
               신규 패스 대비 주간퀘 보상 수령 보류(존버) 권장
             </strong>
             <div id="weeklyQuestCompactSummary" class="text-xs text-amber-body mt-1 font-semibold">
-              • 주간퀘(월 04시 리셋) 보류 후 11/1(일) 04시 신규 패스 오픈 뒤 수령 유리
+              • 주간퀘 마지막 날인 11/1(일) 04시(11월 패스 오픈) ~ 11/2(월) 03:59(주간 리셋 전) 수령 시 사복+월간패스 동시 반영
             </div>
             <p id="weeklyQuestActionDesc" class="detail-desc-block text-xs text-amber-body mt-1.5 leading-relaxed">
-              주간 퀘스트는 매주 월요일 04:00에 초기화됩니다. 10/29(목) 사복 패스 가능성과 11/1(일) 04:00 신규 월간 패스 시작이 겹치므로 일요일 04시 이후 수령이 유리합니다.
+              주간 퀘스트는 <strong>매주 월요일 04:00(11/2 월)</strong>에 리셋되며, <strong>11/1(일)은 이번 주 주간퀘 마지막 날</strong>입니다. <strong>10/29(목) [버터] 사복 패스</strong>와 <strong>11/1(일) 04:00 11월 월간 패스</strong>가 모두 열리므로, 일요일(11/1 04:00 ~ 11/2 03:59)에 주간퀘(+270P)를 수령하면 두 패스 모두에 포인트를 먹일 수 있습니다.
             </p>
           </div>
           <div class="pt-1.5 border-t border-amber flex items-center justify-between text-[11px] text-amber-deep">
-            <span id="currentBeforeThuHint" class="font-semibold truncate">※ 사복 패스 우선 시 10/29(목) 점검 후 · 양쪽 동시 반영은 11/1(일) 수령</span>
+            <span id="currentBeforeThuHint" class="font-semibold truncate">※ 10/29(목) 버터 사복패스 오픈 · 11/01(일) 04시 11월 월간패스 오픈 · 11/02(월) 04시 주간퀘 리셋</span>
           </div>
         </div>
 
@@ -1045,7 +1069,7 @@
                 <span class="font-pop text-xs text-amber-dark shrink-0">오픈 D-1 (10/29 목)</span>
               </div>
               <div class="flex items-center justify-between text-xs text-muted gap-2">
-                <span class="truncate">10/29(목) 점검 후 ~ 11/05(목) 10:59 · 사복 패스 동시 출시 가능성 참고</span>
+                <span class="truncate">10/29(목) 점검 후 ~ 11/05(목) 10:59 · [버터] 사복 패스(~11/12) 및 대충돌 [광기] 동시 오픈</span>
                 <span class="shrink-0 font-semibold">11/5 10:59 마감</span>
               </div>
               <div class="ui-progress-track h-2"><div class="h-full" style="width: 100%; background-color: #F59E0B;"></div></div>
@@ -1466,6 +1490,7 @@
       'gall.dcinside.com',
       'arca.live',
       'note.trickcal.com',
+      'lsbim.github.io',
       'namu.wiki',
       'namuwitch.miraheze.org',
       'www.pickupcal.com',
@@ -1545,7 +1570,7 @@
         importance: 'critical',
         typeLabel: '픽업 모집',
         title: '「버터」 픽업 사도 모집 (공식 사전 안내 확인)',
-        subtitle: '10/29(목) 점검 후 ~ 11/05(목) 10:59 · 사복 패스 동시 출시 가능성 참고',
+        subtitle: '10/29(목) 점검 후 ~ 11/05(목) 10:59 · [버터] 사복 패스(~11/12) 및 대충돌 [광기] 동시 오픈',
         startAt: '2026-10-29T16:00:00+09:00',
         endAt: '2026-11-05T10:59:00+09:00',
         url: 'https://game.naver.com/lounge/Trickcal/board'
@@ -1610,6 +1635,20 @@
         title: '[패스 참고] 주간퀘(월요일 04시 초기화) 보류 시 신규 사복패스·월간패스 포인트 선점 가이드',
         date: '패스 팁',
         url: 'https://arca.live/b/trickcal/163414828'
+      },
+      {
+        id: '8377618',
+        category: '점검·업데이트',
+        title: '[업데이트] 10월 29일(목) 업데이트 예정 내역 안내 (시즌3 8챕터·대충돌 광기·11/1 월간패스)',
+        date: '2026-10-28',
+        url: 'https://game.naver.com/lounge/Trickcal/board/detail/8377618'
+      },
+      {
+        id: '8377635',
+        category: '이벤트',
+        title: '[안내] 신규 상품 [버터] 사복 패스(별밤 산책 대장) 판매 상세 안내 (10/29~11/12)',
+        date: '2026-10-28',
+        url: 'https://game.naver.com/lounge/Trickcal/board/detail/8377635'
       },
       {
         id: 'lounge_butter_pickup',
@@ -2089,10 +2128,10 @@
           thuCycleBadge.className = hasFullUpdateNotice ? 'ui-tag ui-tag-active' : 'ui-tag ui-tag-inferred';
         }
         if (thuUpdateTitle) {
-          thuUpdateTitle.textContent = '[공식] 버터 복각 픽업 / [주기 추론] 사복패스·스토리 8-B';
+          thuUpdateTitle.textContent = '[공식 확정] 버터 픽업 · [버터] 사복 패스 · 시즌3 8챕터 후반';
         }
         if (thuCompactEl) {
-          thuCompactEl.textContent = '• 공식: 버터 픽업(~11/5) 확인 · 추론: 테극 2주차 스토리/사복패스 가능성';
+          thuCompactEl.textContent = '• 공식 확정: 버터 픽업(~11/5) · [버터] 사복패스(~11/12) · 스토리 시즌3 8챕터(8~15화) · 대충돌[광기]';
         }
         if (thuUpdateDetail) {
           thuUpdateDetail.innerHTML = `
@@ -2218,13 +2257,13 @@
             passHeadline.textContent = `신규 패스 대비 주간퀘 보상 수령 보류(존버) 권장`;
           }
           if (passCompactEl) {
-            passCompactEl.textContent = `• 주간퀘(월 04시 리셋) 보류 후 ${newMonthlyPassMonthNum}/1(일) 04시 신규 패스 오픈 뒤 수령 유리`;
+            passCompactEl.textContent = `• 주간퀘 마지막 날인 ${newMonthlyPassMonthNum}/1(일) 04시(월간패스 오픈) ~ ${curWeekNextMonEnd.getUTCMonth() + 1}/${curWeekNextMonEnd.getUTCDate()}(월) 03:59(주간 리셋 전) 수령 유리`;
           }
           if (passDesc) {
-            passDesc.innerHTML = `주간 퀘스트는 <strong>매주 월요일 04:00(${curWeekNextMonEnd.getUTCMonth() + 1}/${curWeekNextMonEnd.getUTCDate()} 월)</strong>에 초기화됩니다. 이번 주간 주기 내에 <strong>${curThuMonth}/${curThuDate}(목) 신규 사복 패스 출시 가능성</strong>과 <strong>${newMonthlyPassMonthNum}/1(일) 04:00 신규 월간 패스 시작</strong>이 모두 포함되어 있으므로, 새 패스 레벨(+270P)을 빠르게 올리고 싶다면 주간퀘 보상 수령을 보류했다가 <strong>${newMonthlyPassMonthNum}/1(일) 04시 이후</strong> 수령하시는 것이 유리합니다.`;
+            passDesc.innerHTML = `주간 퀘스트는 <strong>매주 월요일 04:00(${curWeekNextMonEnd.getUTCMonth() + 1}/${curWeekNextMonEnd.getUTCDate()} 월)</strong>에 리셋되며, <strong>${newMonthlyPassMonthNum}/1(일)은 이번 주 주간퀘의 마지막 날</strong>입니다. <strong>${curThuMonth}/${curThuDate}(목) [버터] 사복 패스 오픈</strong>과 <strong>${newMonthlyPassMonthNum}/1(일) 04:00 신규 월간 패스 오픈</strong>이 모두 겹치므로, 주간퀘 보상(+270P)을 보류했다가 <strong>마지막 날인 일요일(${newMonthlyPassMonthNum}/1 04:00 ~ ${curWeekNextMonEnd.getUTCMonth() + 1}/${curWeekNextMonEnd.getUTCDate()} 03:59)</strong>에 수령하면 사복 패스와 11월 월간 패스 양쪽에 +270P를 동시에 반영할 수 있습니다.`;
           }
           if (passHint) {
-            passHint.textContent = `※ 사복 패스만 우선 올릴 경우 ${curThuMonth}/${curThuDate}(목) 점검 후 · 양쪽 동시 반영은 ${newMonthlyPassMonthNum}/1(일) 수령`;
+            passHint.textContent = `※ ${curThuMonth}/${curThuDate}(목) 사복패스 오픈 · ${newMonthlyPassMonthNum}/01(일) 04시 월간패스 오픈 · ${curWeekNextMonEnd.getUTCMonth() + 1}/02(월) 04시 주간퀘 리셋`;
           }
           if (passCard) {
             passCard.title = `주간퀘는 월요일 04:00에 초기화됩니다. ${curThuMonth}/${curThuDate}(목) 사복패스 가능성 및 ${newMonthlyPassMonthNum}/1(일) 04:00 월간패스 갱신이 겹치므로 일요일 04시 이후 수령 시 신규 패스 경험치(+270P)를 즉시 획득할 수 있습니다.`;
