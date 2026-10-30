@@ -961,22 +961,26 @@
       <!-- 고수용 핵심 판단 지표 3열 카드 -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-2.5 sm:gap-3" data-mobile-panel="briefing">
 
-        <!-- [브리핑 1] 다가오는 업데이트 -->
+        <!-- [브리핑 1] 다가오는 업데이트 & 클론 팩토리 로테이션 주기 -->
         <div id="thuBriefingCard" class="ui-subbox p-3 sm:p-3.5 flex flex-col justify-between gap-2">
           <div class="flex items-center justify-between gap-1.5 min-w-0">
             <span id="thuBriefingHeaderLabel" class="text-xs font-bold text-muted truncate">다가오는 업데이트</span>
-            <span id="thuCycleBadge" class="ui-tag ui-tag-active shrink-0">10/29(목)</span>
+            <span id="thuCycleBadge" class="ui-tag ui-tag-active shrink-0">11/5(목)</span>
           </div>
           <div>
             <strong id="thuUpdateTitle" class="font-pop text-sm sm:text-base text-main block">
-              [공식 확정] 버터 픽업 · [버터] 사복 패스 · 시즌3 8챕터 후반
+              [주기 추론] 11/5(목) 신규 사도 & 테마극장 교체 주기
             </strong>
             <div id="thuUpdateCompactSummary" class="text-xs text-muted mt-1 font-semibold">
-              • 공식 확정: 버터 픽업(~11/5) · [버터] 사복패스(~11/12) · 스토리 시즌3 8챕터(8~15화) · 대충돌[광기]
+              • 추론(참고): 2주 주기 신규 사도 픽업 & 신규 메인 테마극장 오픈 예상 주간
+            </div>
+            <div id="cloneFactoryCompactLine" class="text-xs text-green-dark mt-1 font-bold">
+              • 클론 팩토리(12~13주 주기): 현 시즌(9/24~) 6주차 · ~12/17·24(목) 교체 예정 (D-55)
             </div>
             <div id="thuUpdateDetail" class="detail-desc-block text-xs text-muted mt-1.5 leading-relaxed">
-              <div><strong class="text-green-dark">• 공식 확정(10/28 공지):</strong> <strong>「버터」 픽업(~11/5)</strong>, <strong>[버터] 사복 패스(별밤 산책 대장, ~11/12)</strong>, <strong>메인 스토리 시즌3 8챕터(8~15화) &amp; 시즌1 보너스(1~5화)</strong>가 확정되었습니다.</div>
-              <div><strong class="text-sky-dark">• 동시 진행:</strong> <strong>차원 대충돌 [광기](~11/5)</strong> 및 <strong>시온 재개봉 테극 〈스스로 선택한 어둠의 길〉(~11/5)</strong>이 함께 오픈됩니다.</div>
+              <div><strong class="text-sky-dark">• 차주 업데이트(11/5 목):</strong> 직전 테마극장(코페)이 11/5(목) 10:59에 종료됨에 따라 <strong>신규 사도 픽업 및 신규 메인 테마극장, 평일 농장 심부름 시즌 교체</strong>가 예상됩니다.</div>
+              <div><strong class="text-green-dark">• 클론 팩토리 만료·교체 주기(12~14주):</strong> 직전 <code>9/24(목)</code> 교체 이후 현재 6주차이며, 역대 주기(<code>1/1 → 3/26 → 6/18 → 9/24</code>) 기준 차기 교체는 <strong>12/17(목)~12/24(목) 10:59 (3.25주년 시즌)</strong> 예정입니다. (교체 1주 전 수요일 공지에서 사전 예고)</div>
+              <div><strong class="text-main">• 현 시즌 클론 팩토리 ★3 증명서(18종):</strong> 티그, 시저, 스패럿, 리츠, 힐데, 니콜, 셀리네, 로네(시장), 스키아, 셰럼, 에슈르(마도), 피코라, 오로라, 나이아, 모모, 바롱, 로니, 포셔</div>
             </div>
           </div>
         </div>
@@ -1793,6 +1797,17 @@
         startAt: '2026-10-08T16:00:00+09:00',
         endAt: '2026-11-05T10:59:00+09:00',
         url: 'https://www.pickupcal.com/games/trickcal/'
+      },
+      {
+        id: 'ev_clone_factory_rotation',
+        category: 'season',
+        importance: 'critical',
+        typeLabel: '클론 팩토리 (12~13주)',
+        title: '클론 팩토리 사도 증명서 현 시즌 로테이션 (~12/24 교체 주기)',
+        subtitle: '9/24(목) 개편 · ★3 티그·시저·리츠·힐데·로네(시장)·스키아·피코라·나이아·모모·로니 등 18종 (12/17~12/24 10:59 교체 예정)',
+        startAt: '2026-09-24T11:00:00+09:00',
+        endAt: '2026-12-24T10:59:00+09:00',
+        url: 'https://game.naver.com/lounge/Trickcal/board/detail/8228598'
       }
     ];
 
@@ -2292,6 +2307,53 @@
       clockBadge.textContent = `${prefix} ${kst.month + 1}/${kst.date} ${formatTwo(kst.hours)}:${formatTwo(kst.minutes)}:${formatTwo(kst.seconds)}`;
     }
 
+
+    // [클론 팩토리 로테이션 주기 계산기: 26.01.01 -> 03.26(12주) -> 06.18(12주) -> 09.24(14주) -> 차기 12/17(12주)~12/24(13주, 3.25주년 점검) 주기]
+    const CLONE_FACTORY_ANCHOR_START_MS = new Date('2026-09-24T11:00:00+09:00').getTime();
+    const CLONE_FACTORY_CYCLE_WEEKS = 13; // 9/24 -> 12/24 (13주, 12/17~12/24 범위)
+    const CLONE_FACTORY_3STAR_LIST = '티그, 시저, 스패럿, 리츠, 힐데, 니콜, 셀리네, 로네(시장), 스키아, 셰럼, 에슈르(마도), 피코라, 오로라, 나이아, 모모, 바롱, 로니, 포셔';
+
+    function computeCloneFactoryCycleInfo(nowMs = getEffectiveNowMs()) {
+      const cycleMs = CLONE_FACTORY_CYCLE_WEEKS * 7 * 86400 * 1000;
+      let cycleIndex = Math.floor((nowMs - CLONE_FACTORY_ANCHOR_START_MS) / cycleMs);
+      if (cycleIndex < 0) cycleIndex = 0;
+      const startMs = CLONE_FACTORY_ANCHOR_START_MS + cycleIndex * cycleMs;
+      const endMs = startMs + cycleMs - 60 * 1000; // 목요일 10:59
+      const minWindowMs = startMs + 12 * 7 * 86400 * 1000 - 60 * 1000; // 12주차 목요일 10:59
+      const elapsedDays = Math.max(0, Math.floor((nowMs - startMs) / (86400 * 1000)));
+      const currentWeekNum = Math.floor(elapsedDays / 7) + 1;
+      const remainDays = Math.max(0, Math.ceil((endMs - nowMs) / (86400 * 1000)));
+      const startKst = getKstDateParts(startMs);
+      const minKst = getKstDateParts(minWindowMs);
+      const endKst = getKstDateParts(endMs);
+
+      const notices = Array.isArray(state.notices) ? state.notices : DEFAULT_LOUNGE_NOTICES;
+      const preNotice = notices.find((n) => n && n.title && n.title.includes('클론 팩토리'));
+      const isEndingSoon = remainDays <= 14 || Boolean(preNotice);
+
+      const compactText = preNotice
+        ? `• 🚨 클론 팩토리 교체 예고 확인: ${preNotice.title}`
+        : isEndingSoon
+        ? `• 🚨 클론 팩토리 교체 임박(${currentWeekNum}주차): ~${minKst.month + 1}/${minKst.date}·${endKst.date}(목) 10:59 만료 예정 (D-${remainDays})`
+        : `• 클론 팩토리(12~13주 주기): 현 시즌(${startKst.month + 1}/${startKst.date}~) ${currentWeekNum}주차 · ~${minKst.month + 1}/${minKst.date}·${endKst.date}(목) 교체 예정 (D-${remainDays})`;
+
+      const detailHtml = `
+        <div><strong class="text-green-dark">• 클론 팩토리 만료·교체 주기(12~14주 분기 로테이션):</strong> 역대 공식 교체일(<code>1/1 → 3/26 → 6/18 → 9/24</code>) 기준 현재 <strong>${currentWeekNum}주차</strong> 진행 중이며, 현 시즌 만료(차기 교체)는 <strong>${minKst.month + 1}/${minKst.date}(목)~${endKst.month + 1}/${endKst.date}(목) 10:59 (D-${remainDays})</strong> 예정입니다. (교체 1주일 전 수요일 공지에서 사전 안내)</div>
+        <div><strong class="text-main">• 현 시즌 클론 팩토리 ★3 사도 증명서(18종):</strong> ${CLONE_FACTORY_3STAR_LIST} <a href="https://game.naver.com/lounge/Trickcal/board/detail/8228598" target="_blank" rel="noopener noreferrer" data-stop-prop="true" class="text-accent underline font-semibold">[9/24 공식 변경표 ↗]</a></div>
+      `;
+
+      return {
+        startMs,
+        endMs,
+        currentWeekNum,
+        remainDays,
+        isEndingSoon,
+        compactText,
+        detailHtml,
+        endLabel: `${minKst.month + 1}/${minKst.date}~${endKst.month + 1}/${endKst.date}(목) 10:59`
+      };
+    }
+
     function findConfirmedNoticesForDate(monthNum, dateNum) {
       const notices = Array.isArray(state.notices) ? state.notices : DEFAULT_LOUNGE_NOTICES;
       const datePatterns = [
@@ -2445,6 +2507,19 @@
         if (nextWeekCyclePreview) {
           nextWeekCyclePreview.textContent = `${nextThuMonth}/${nextThuDate}(목) 신규 사도 & 신규 테마극장 주기`;
         }
+      }
+
+      // 클론 팩토리 로테이션 주기 및 만료 기한 상시 업데이트
+      const cfInfo = computeCloneFactoryCycleInfo(nowMs);
+      const cfCompactEl = document.getElementById('cloneFactoryCompactLine');
+      if (cfCompactEl) {
+        cfCompactEl.textContent = cfInfo.compactText;
+        cfCompactEl.className = cfInfo.isEndingSoon
+          ? 'text-xs text-red-dark mt-1 font-bold'
+          : 'text-xs text-green-dark mt-1 font-bold';
+      }
+      if (thuUpdateDetail) {
+        thuUpdateDetail.innerHTML += cfInfo.detailHtml;
       }
 
       const gameNowKstMs = nowMs + (9 - 4) * 3600 * 1000;
@@ -2982,6 +3057,19 @@
         startAt: new Date(monthStartUtcMs).toISOString(),
         endAt: new Date(nextMonthStartUtcMs).toISOString(),
         url: 'https://namuwitch.miraheze.org/wiki/Kr.client/Pass'
+      });
+
+      const cf = computeCloneFactoryCycleInfo(nowMs);
+      fallbackList.push({
+        id: `auto_clone_factory_${cf.startMs}`,
+        category: 'season',
+        importance: cf.isEndingSoon ? 'critical' : 'normal',
+        typeLabel: '클론 팩토리 (12~13주)',
+        title: `클론 팩토리 사도 증명서 로테이션 (${cf.currentWeekNum}주차 진행 중)`,
+        subtitle: `차기 교체 예정: ${cf.endLabel} (교체 1주 전 수요일 사전 공지) · ★3 티그·시저·리츠·힐데·로네(시장)·스키아·피코라 등 18종`,
+        startAt: new Date(cf.startMs).toISOString(),
+        endAt: new Date(cf.endMs).toISOString(),
+        url: 'https://game.naver.com/lounge/Trickcal/board/detail/8228598'
       });
 
       return fallbackList;
