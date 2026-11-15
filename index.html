@@ -947,6 +947,15 @@
             <span>공식 라운지</span><span class="ext-arrow">↗</span>
           </a>
           <a
+            href="https://shop.trickcal.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="site-link-btn ui-btn-neutral"
+            title="아이시움 라운지 (공식 웹상점 · 왕사탕 패키지 구매 시 우편함 보관기한 무제한!)"
+          >
+            <span>아이시움 웹상점</span><span class="ext-arrow">↗</span>
+          </a>
+          <a
             href="https://coupon.a.prod.service.trickcal.io/"
             target="_blank"
             rel="noopener noreferrer"
@@ -1402,8 +1411,11 @@
                 <option value="0" data-icon="•" data-color="#7c5836">0충 · 충전 안 함 (0 엘리프)</option>
                 <option value="3" data-icon="🌱" data-color="#56c25b">3충 · 가성비 1구간 (할인 54 / 기본 90 엘리프 · +300개)</option>
                 <option value="5" data-icon="👑" data-color="#2eb8ac" selected>5충 · 국민 가성비 구간 (할인 114 / 기본 190 엘리프 · +500개)</option>
+                <option value="7" data-icon="🍱" data-color="#3b82f6">7충 · 빙고/도시락 권장선 (할인 192 / 기본 320 엘리프 · +700개)</option>
                 <option value="8" data-icon="⚡" data-color="#e5a93c">8충 · 황크/장비 집중 (할인 240 / 기본 400 엘리프 · +800개)</option>
+                <option value="9" data-icon="🎯" data-color="#9b6ce6">9충 · 무공물 엘리프 페이백 분기선 (할인 288 / 기본 480 엘리프 · +900개)</option>
                 <option value="11" data-icon="🔥" data-color="#c98a4b">11충 · 고강도 파밍 (할인 420 / 기본 700 엘리프 · +1,100개)</option>
+                <option value="13" data-icon="🏅" data-color="#d97706">13충 · 무공물 전체 재화가치 분기선 (할인 576 / 기본 960 엘리프 · +1,300개)</option>
                 <option value="15" data-icon="💎" data-color="#e86f88">15충 · 풀충전 상한 (할인 810 / 기본 1,350 엘리프 · +1,500개)</option>
               </select>
             </div>
@@ -1438,50 +1450,123 @@
         </div>
       </div>
 
-      <!-- [패널 2] 3.25주년(12/24 점검) 대비 왕사탕 '도시락(우편함 31일)' 적립·개봉 시뮬레이터 -->
+      <!-- [패널 2] 3.25주년 대비 왕사탕 '도시락(우편함 31일 + 아이시움 웹상점 무제한 통조림)' & 빙고 재화 효율 시뮬레이터 -->
       <div id="calcPanelDosirak" class="hidden flex flex-col gap-3.5">
-        <!-- 상단 3열 핵심 타임라인 & 누적 시뮬레이션 결과 -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+        <!-- 상단 4열 핵심 타임라인 · 누적 왕사탕 · 예상 빙고 판수 · 엘리프 환산 효율 대시보드 -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
           <div class="ui-subbox p-3 flex flex-col justify-between bg-amber-soft">
-            <span class="text-[11px] font-bold text-amber-deep">① 우편함(30~31일) 역산 도시락 시작 적기</span>
-            <strong id="dosirakStartRecommendedText" class="font-pop text-base sm:text-lg text-amber-dark mt-0.5">11월 24일(화) ~ 11월 25일(수)</strong>
-            <span id="dosirakStartCountdownSub" class="text-[11px] text-amber-body">3.25주년 점검(12/24 목) 기준 정확히 30일 전</span>
+            <span class="text-[11px] font-bold text-amber-deep">① 우편함(30~31일) 역산 시작일</span>
+            <strong id="dosirakStartRecommendedText" class="font-pop text-sm sm:text-base text-amber-dark mt-0.5">11/24(화) 시작 (30일 적립)</strong>
+            <span id="dosirakStartCountdownSub" class="text-[11px] text-amber-body">12/24(목) 오픈 기준 (12/31 오픈 대비 시 12/01 안전)</span>
           </div>
           <div class="ui-subbox p-3 flex flex-col justify-between bg-green-soft">
-            <span class="text-[11px] font-bold text-green-dark">② 12/24(목) 오픈 시 우편함 누적 왕사탕</span>
-            <strong id="dosirakTotalSavedVal" class="font-pop text-lg sm:text-xl text-green-dark tabular-nums mt-0.5">총 17,499 개</strong>
-            <span id="dosirakDailySavedSub" class="text-[11px] text-muted">하루 +550개 우편함 적립 × 30일 (+보유 999개)</span>
+            <span class="text-[11px] font-bold text-green-dark">② 빙고 총 투입 왕사탕 (도시락+통조림)</span>
+            <strong id="dosirakTotalSavedVal" class="font-pop text-base sm:text-lg text-green-dark tabular-nums mt-0.5">총 17,499 개</strong>
+            <span id="dosirakDailySavedSub" class="text-[11px] text-muted">우편함 +16,500 + 보유 999 + 웹상점 0</span>
+          </div>
+          <div class="ui-subbox p-3 flex flex-col justify-between border-2 border-[#337b46]">
+            <div class="flex items-center justify-between gap-1">
+              <span class="text-[11px] font-bold text-main">③ 예상 빙고 완주 & 재화 총 가치</span>
+              <span class="ui-tag ui-tag-active text-[10px]">100개당 +28무엘</span>
+            </div>
+            <strong id="dosirakBingoBoardsVal" class="font-pop text-base sm:text-lg text-green-accent tabular-nums mt-0.5">약 6.9 판 완주 (≈ 5,059 무엘 가치)</strong>
+            <span id="dosirakBingoPaybackSub" class="text-[11px] font-semibold text-main">직접 페이백: 무료엘리프 +1,247개 · 왕사탕 +693개</span>
           </div>
           <div class="ui-subbox p-3 flex flex-col justify-between border-2 border-[#c85219]">
-            <span class="text-[11px] font-bold text-main">③ 언제부터 어떻게 까먹어야 하나?</span>
-            <strong id="dosirakConsumeStartText" class="font-pop text-base sm:text-lg text-red-dark mt-0.5">12/24(목) 점검 직후부터 개봉</strong>
-            <span class="text-[11px] font-semibold text-main">우편함 맨 아래(남은기한 1일 임박)부터 매일 소모</span>
+            <span class="text-[11px] font-bold text-main">④ 적립 기간 무료엘리프 소모 vs 손익</span>
+            <strong id="dosirakConsumeStartText" class="font-pop text-sm sm:text-base text-red-dark tabular-nums mt-0.5">충전 지출 -3,420 무엘 (실질 -2,173)</strong>
+            <span id="dosirakNetValueSub" class="text-[11px] font-semibold text-green-dark">전체 재화(730무엘/판) 환산 시 +1,639 무엘 이득!</span>
           </div>
         </div>
 
-        <!-- 좌우 2열: 좌측 [도시락 적립 품목 & 기간 시뮬레이터] / 우측 [왜 999 고정 대신 '5충 오버플로우 순환'인가? 실전 가이드] -->
+        <!-- 중단: 3.25주년 빙고 예상 완주 판수 기준 핵심 획득 재화 명세표 (아카라이브 189151593 1판당 보상 공식 실시간 연동) -->
+        <div class="ui-subbox p-3 flex flex-col gap-2 bg-white border">
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-1.5 border-b">
+            <div class="flex items-center gap-1.5">
+              <span class="ui-tag ui-tag-active text-[10px]">빙고 1판 = 순소모 약 2,525 왕사탕</span>
+              <strong class="font-pop text-xs sm:text-sm text-main">🎁 위 왕사탕으로 3.25주년 빙고에서 얻는 예상 재화 총합 (1판당 730 무료엘리프 가치)</strong>
+            </div>
+            <a href="https://arca.live/b/trickcal/189151593" target="_blank" rel="noopener noreferrer" class="text-[11px] text-accent underline font-semibold">빙고 효율 계산 원문(189151593) ↗</a>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 text-xs">
+            <div class="bg-sub rounded-lg px-2.5 py-1.5">
+              <span class="text-[10px] text-muted block">무료 엘리프 (판당 180)</span>
+              <strong id="bingoRewardElif" class="font-pop text-green-dark tabular-nums">+1,247 개</strong>
+            </div>
+            <div class="bg-sub rounded-lg px-2.5 py-1.5">
+              <span class="text-[10px] text-muted block">교단 증명서 (판당 20 · 필수)</span>
+              <strong id="bingoRewardCert" class="font-pop text-amber-dark tabular-nums">+139 개</strong>
+            </div>
+            <div class="bg-sub rounded-lg px-2.5 py-1.5">
+              <span class="text-[10px] text-muted block">골드 (판당 31.8만)</span>
+              <strong id="bingoRewardGold" class="font-pop text-main tabular-nums">+2,204,000 G</strong>
+            </div>
+            <div class="bg-sub rounded-lg px-2.5 py-1.5">
+              <span class="text-[10px] text-muted block">왕사탕(100)·별사탕(40)</span>
+              <strong id="bingoRewardCandies" class="font-pop text-sky-dark tabular-nums">왕 +693 / 별 +277</strong>
+            </div>
+            <div class="bg-sub rounded-lg px-2.5 py-1.5">
+              <span class="text-[10px] text-muted block">모카롱(1.75만)·슈카롱(4.8천)</span>
+              <strong id="bingoRewardMacarons" class="font-pop text-main tabular-nums">모 12.1만 / 슈 3.3만</strong>
+            </div>
+            <div class="bg-sub rounded-lg px-2.5 py-1.5">
+              <span class="text-[10px] text-muted block">정석(110)·빛상자(30)·연성(21)</span>
+              <strong id="bingoRewardBoxes" class="font-pop text-main tabular-nums">정석 762 · 빛 208 · 연성 146</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- 좌우 2열: 좌측 [도시락·웹상점 통조림·충전 시뮬레이터] / 우측 [빙고 충전 효율 & 아이시움 웹상점 무제한 보관 가이드] -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-3.5">
-          <!-- 좌측: 내 도시락 적립 항목 & 시작 시기 선택 -->
+          <!-- 좌측: 내 도시락 적립 항목 & 시작 시기 & 아이시움 웹상점 무제한 통조림 선택 -->
           <div class="ui-subbox p-3.5 flex flex-col gap-2.5">
             <div class="flex items-center justify-between gap-2 pb-1.5 border-b">
-              <strong class="font-pop text-xs sm:text-sm text-main">🍱 도시락(우편함 이동 가능) 일일 적립 품목 선택</strong>
-              <a href="https://m.ruliweb.com/community/board/300143/read/68936640" target="_blank" rel="noopener noreferrer" class="text-[11px] text-accent underline font-semibold">도시락 원리 공략 ↗</a>
+              <strong class="font-pop text-xs sm:text-sm text-main">🍱 도시락(31일) & 아이시움 웹상점(무제한) 설정</strong>
+              <a href="https://arca.live/b/trickcal/188146325" target="_blank" rel="noopener noreferrer" class="text-[11px] text-accent underline font-semibold">아이시움 무제한 통조림 팁 ↗</a>
             </div>
 
             <div class="flex flex-col gap-1">
-              <span class="text-xs font-semibold text-main">도시락 적립 시작 시기 (3.25주년 12/24 목 업데이트 기준)</span>
+              <span class="text-xs font-semibold text-main">1) 우편함 도시락 적립 시작일 & 목표 시나리오 (30~31일 기한)</span>
               <select
                 id="selDosirakDays"
                 onchange="window.trickcalUpdateDosirakCalc && window.trickcalUpdateDosirakCalc()"
                 class="ui-select w-full"
                 aria-label="도시락 적립 기간 선택"
               >
-                <option value="30" data-icon="👑" data-color="#2eb8ac" selected>11/24(화) 시작 · 30일 풀적립 (12/24 점검 첫날부터 개봉 · 최적)</option>
+                <option value="30" data-icon="👑" data-color="#2eb8ac" selected>11/24(화) 시작 · 30일 풀적립 (12/24 크리스마스 점검 오픈 타겟)</option>
+                <option value="30_dec31" data-icon="🛡️" data-color="#3b82f6">12/01(화) 시작 · 30일 안전적립 (12/24·12/31 신캐 주간 양쪽 100% 무손실)</option>
                 <option value="21" data-icon="⭐" data-color="#56c25b">12/03(목) 시작 · 21일(3주) 적립 (기한 여유 넉넉)</option>
                 <option value="14" data-icon="⚡" data-color="#e5a93c">12/10(목) 시작 · 14일(2주) 적립 (중단기 집중)</option>
                 <option value="7" data-icon="🌱" data-color="#9b6ce6">12/17(목) 시작 · 7일(1주) 단기 적립 (가벼운 준비)</option>
               </select>
             </div>
+
+            <div class="flex flex-col gap-1">
+              <div class="flex items-center justify-between gap-2 text-xs">
+                <span class="font-semibold text-main">2) [아이시움 라운지] 웹상점 구매 무제한 보관('통조림') 왕사탕</span>
+                <a href="https://shop.trickcal.com/" target="_blank" rel="noopener noreferrer" class="text-[11px] text-accent underline font-semibold shrink-0">웹상점 열기 ↗</a>
+              </div>
+              <select
+                id="selDosirakWebshopCandy"
+                onchange="window.trickcalUpdateDosirakCalc && window.trickcalUpdateDosirakCalc()"
+                class="ui-select w-full"
+                aria-label="아이시움 라운지 무제한 보관 왕사탕 수량"
+              >
+                <option value="0" data-icon="•" data-color="#7c5836" selected>웹상점 통조림 없음 (0개 · 우편함 일일 적립만 계산)</option>
+                <option value="1000" data-icon="🥫" data-color="#56c25b">+1,000개 (아이시움 라운지 소형 왕사탕 패키지 사전 비축)</option>
+                <option value="2000" data-icon="🥫" data-color="#2eb8ac">+2,000개 (아이시움 라운지 중형 왕사탕 패키지 사전 비축)</option>
+                <option value="3000" data-icon="🥫" data-color="#3b82f6">+3,000개 (아이시움 라운지 이벤트 왕사탕 패키지 비축 · +빙고 1.2판)</option>
+                <option value="5000" data-icon="👑" data-color="#e5a93c">+5,000개 (아이시움 라운지 대형 누적 비축 · +빙고 2판)</option>
+              </select>
+            </div>
+
+            <label class="flex items-center justify-between gap-2 text-xs cursor-pointer bg-white border rounded-lg px-2.5 py-1.5">
+              <span class="flex items-center gap-2 min-w-0">
+                <input type="checkbox" id="chkDosirakIncludeBingo2Weeks" onchange="window.trickcalUpdateDosirakCalc && window.trickcalUpdateDosirakCalc()" class="ui-checkbox" />
+                <span class="font-bold text-main truncate">빙고 진행 기간(14일) 동안 현장 수급·충전할 왕사탕도 합산 보기</span>
+              </span>
+              <span class="ui-tag text-[10px] shrink-0">2주 현장분</span>
+            </label>
 
             <label class="flex items-center justify-between gap-2 text-xs cursor-pointer">
               <span class="flex items-center gap-2 min-w-0">
@@ -1510,7 +1595,7 @@
             <label class="flex items-center justify-between gap-2 text-xs cursor-pointer">
               <span class="flex items-center gap-2 min-w-0">
                 <input type="checkbox" id="chkDosirakPaid50" onchange="window.trickcalUpdateDosirakCalc && window.trickcalUpdateDosirakCalc()" class="ui-checkbox" />
-                <span class="font-semibold text-main truncate">데일리 상점 유료 엘리프 50개 왕사탕 구매</span>
+                <span class="font-semibold text-main truncate">데일리 상점 유료 엘리프 50개 왕사탕 구매 (30일 +3,000개)</span>
               </span>
               <strong class="font-pop text-sky-dark shrink-0">+100개 / 일</strong>
             </label>
@@ -1524,24 +1609,31 @@
             </label>
           </div>
 
-          <!-- 우측: 효율 비교 & 가성비 5충(114엘리프) 활용 실전 프로토콜 -->
+          <!-- 우측: 아카라이브 189151593 빙고 효율 분석 & 아이시움 웹상점 무제한 통조림 실전 프로토콜 -->
           <div class="ui-subbox p-3.5 flex flex-col justify-between gap-2">
             <div class="flex items-center justify-between gap-2 pb-1.5 border-b">
-              <strong class="font-pop text-xs sm:text-sm text-main">💡 왜 '999 고정' 대신 '5충 오버플로우 순환'인가?</strong>
-              <a href="https://arca.live/b/trickcal/178018325" target="_blank" rel="noopener noreferrer" class="text-[11px] text-accent underline font-semibold">자연회복 손실 분석 ↗</a>
+              <strong class="font-pop text-xs sm:text-sm text-main">💡 빙고 효율 공식(189151593) & 아이시움 무제한 통조림 핵심 정리</strong>
+              <a href="https://arca.live/b/trickcal/189151593" target="_blank" rel="noopener noreferrer" class="text-[11px] text-accent underline font-semibold">빙고 효율 원문 ↗</a>
             </div>
             <div class="text-xs text-main flex flex-col gap-1.5 leading-relaxed">
               <div>
-                <strong class="text-red-dark">1. 999개 고정 존버의 맹점:</strong> 보유 왕사탕을 999개로 묶어두면 <strong>자연회복(하루 288개, 30일 8,640개)이 증발</strong>할 뿐 아니라, 999개 상태에서는 <strong>가성비 최고인 일일 직접 충전(5충 = 114 무료엘리프로 500개, 100개당 22.8엘리프)</strong> 버튼 자체가 막힙니다. (반면 상점 200무엘 왕사탕은 100개당 200엘리프로 <strong>8.7배 비쌈</strong>)
+                <strong class="text-green-dark">1. 빙고 1판 효율 & 최적 충전 횟수 (왕사탕 100개당 +27~29 엘리프 이득):</strong>
+                <ul class="list-disc pl-4 mt-0.5 space-y-0.5 text-muted font-semibold">
+                  <li><strong>블록 배치 공식:</strong> <code>십자·X·3×3 → 노란 네모</code>, <code>길쭉이 → 녹색 십자</code> 배치 시 평균 <strong>10~11회(2,000~2,200 재화 = 왕사탕 2,500~2,750개, 100개 페이백 감안 순소모 ~2,525개)</strong>로 1판 완주!</li>
+                  <li><strong>올클리어 원칙:</strong> 모카롱만 남았어도 <strong>줄 완성 무료엘리프(판당 180개)</strong> 비중이 커서 끝까지 다 여는 게 이득이며, 최소 <strong>교단 증명서(20개)</strong>는 무조건 먹고 넘어가야 합니다.</li>
+                  <li><strong>적정 충전선:</strong> 무공물 기준 엘리프 페이백만 봐도 <strong>9충</strong>, 전체 재화 가치(판당 730무엘) 반영 시 <strong>13충</strong>까지 손해가 없습니다. 현실적으로는 <strong>평소보다 +2~3충(3충 유저 → 5충, 5충 유저 → 7~8충)</strong>이 최적이며, <strong>왕사탕 공물(40% 할인) 유저는 15충까지 전 구간 이득</strong>입니다.</li>
+                </ul>
               </div>
               <div>
-                <strong class="text-green-dark">2. 최고 효율 해법 【5충 오버플로우 일일 순환법】:</strong>
+                <strong class="text-sky-dark">2. [아이시움 라운지] 웹상점 구매 = 우편함 보관기한 무제한 ('통조림'):</strong>
                 <ul class="list-disc pl-4 mt-0.5 space-y-0.5 text-muted font-semibold">
-                  <li><strong>Step 1 (일일 기본 루틴):</strong> 평소엔 자연회복(288개/일) 중 <strong>하루 200 왕사탕은 테마극장 순한맛 20회 면제</strong>에 써서 <strong>테극 일일 업적 2개 + 성물 패스 포인트 + 테극 상점 털기</strong>를 매일 완료합니다.</li>
-                  <li><strong>Step 2 (성물 수령 직전):</strong> 현재 보유 왕사탕에 <strong>가성비 5충(114 엘리프 = +500개)</strong>을 먼저 실행해 보유량을 <code>900~998개</code>로 맞춥니다.</li>
-                  <li><strong>Step 3 (우편함 밀어넣기):</strong> 그 상태에서 <strong>성물 보상 + 데일리 무료 상자(100개) + 패스/공물(100개)</strong>을 수령하면 999한도를 초과한 <strong>하루 550~750개가 전부 우편함(31일 보관)으로 직행</strong>합니다!</li>
-                  <li><strong>Step 4 (즉시 털기):</strong> 우편함 적립 직후, 손에 든 999개는 <strong>테마극장 일일 20회(200개) + 클론 팩토리(일 8회) + 침략 면제</strong>로 <code>0개</code>까지 다 털어 자연회복이 다시 돌게 합니다.</li>
+                  <li>인게임 상점 구매분은 우편함 30일 기한이 걸리지만, <strong>공식 웹상점 <a href="https://shop.trickcal.com/" target="_blank" rel="noopener noreferrer" class="text-accent underline">[아이시움 라운지]</a>에서 결제한 왕사탕 패키지는 우편함 보관 기한이 '무제한'</strong>입니다 (<a href="https://arca.live/b/trickcal/188146325" target="_blank" rel="noopener noreferrer" class="text-accent underline">검증 개념글 ↗</a>).</li>
+                  <li>따라서 <strong>11월 24일 이전이라도 <code>1 엘리프 : 0.78 왕사탕</code> 이상 효율 패키지</strong>가 나오면 아이시움 라운지에서 미리 구매해 3.25주년까지 무제한 통조림으로 쟁여둘 수 있습니다. (단, 인게임 우편함 <strong>[모두 받기]</strong> 및 <strong>[장비 일괄 제작]</strong> 시 자동 소모 주의!)</li>
                 </ul>
+              </div>
+              <div>
+                <strong class="text-amber-dark">3. 11/24 시작 vs 12/01 시작 (12/24 목 vs 12/31 목 오픈 변수):</strong>
+                2주 테마극장 주기상 신캐 주간은 <strong>12/31(목)</strong>이므로, 12/24(크리스마스) 오픈에 맞추면 <strong>11/24(화)</strong>부터, 혹시 12/31에 열려도 첫 주 우편이 만료되지 않게 안전하게 가려면 <strong>12/01(화)</strong>부터 오버플로우 순환(수령 직전 5~7충으로 900~998개 맞춘 뒤 성물·상자 우편함 직행 → 보유분은 테극 20회+침략으로 즉시 0개 소모)을 시작하세요.
               </div>
             </div>
           </div>
@@ -2005,8 +2097,10 @@
       'namuwitch.miraheze.org',
       'www.pickupcal.com',
       'trickcal.com',
+      'shop.trickcal.com',
       'coupon.a.prod.service.trickcal.io',
-      '10dukgame.tistory.com'
+      '10dukgame.tistory.com',
+      'm.ruliweb.com'
     ]);
 
     const SAFE_NUMERIC_ID_RE = /^\d{1,15}$/;
@@ -2122,12 +2216,23 @@
         id: 'ev_elias_frontier_death',
         category: 'season',
         importance: 'critical',
-        typeLabel: '프론티어 · 미니게임',
-        title: '엘리아스 프론티어 신규 보스 「죽음」 & 이세계픽셀 오픈',
-        subtitle: '11/12(목) 정기점검 후 오픈 ~ 11/19(목) 10:59 · 테마극장 2주차 핵심 콘텐츠',
+        typeLabel: '프론티어 · 2주차',
+        title: '엘리아스 프론티어 11월 시즌 (보스 「니펠/죽음」) & 이세계픽셀',
+        subtitle: '성격 구역 2곳 정화(실체의 코인) → 보스 구역 도전 & 신규 권능 [단체 건강검진] · 프리셋 공유 지원 (~11/19 10:59)',
         startAt: '2026-11-12T16:00:00+09:00',
         endAt: '2026-11-19T10:59:00+09:00',
-        url: 'https://www.pickupcal.com/games/trickcal/'
+        url: 'https://arca.live/b/trickcal/188773554'
+      },
+      {
+        id: 'ev_theme_costume_7_special_pickup',
+        category: 'pickup',
+        importance: 'critical',
+        typeLabel: '스페셜 픽업 · 사복 할인',
+        title: '[테마 사복] 엘다인 7종 세트 할인 & 스페셜 픽업 선택 모집',
+        subtitle: '디아나(왕년)·벨라·티그(영웅)·죠안·란·네르(빡침)·우로스 테마 사복 할인 및 선택 픽업 (~11/19 10:59)',
+        startAt: '2026-11-12T16:00:00+09:00',
+        endAt: '2026-11-19T10:59:00+09:00',
+        url: 'https://arca.live/b/trickcal/188662871'
       },
       {
         id: 'ev_farm_errand',
@@ -2165,6 +2270,20 @@
     ];
 
     const DEFAULT_LOUNGE_NOTICES = [
+      {
+        id: 'arca_bingo_189151593',
+        category: '완장·마감',
+        title: '[빙고·도시락 공략] 3.25주년 도시락 시즌 대비 빙고 효율 계산 (1판=730무엘 가치·100왕사탕당 +28무엘) & 아이시움 웹상점 무제한 통조림 팁',
+        date: '2026-11-14',
+        url: 'https://arca.live/b/trickcal/189151593'
+      },
+      {
+        id: 'arca_maint_188773554',
+        category: '점검·업데이트',
+        title: '[업데이트] 11월 12일(목) 업데이트 안내 (엘리아스 프론티어 보스 「니펠/죽음」 · 테마 사복 7종 & 스페셜 픽업 · 나들이 · 프리셋 공유)',
+        date: '2026-11-12',
+        url: 'https://arca.live/b/trickcal/188773554'
+      },
       {
         id: 'pepero_20261111',
         category: '쿠폰',
@@ -2455,7 +2574,7 @@
     function isValidOfficialTitleOnly(title) {
       if (!title || typeof title !== 'string') return false;
       const t = title.trim();
-      if (t.startsWith('[갤러리 공지]') || t.startsWith('[패스 참고]') || t.startsWith('[패스 핵심]')) return true;
+      if (t.startsWith('[갤러리 공지]') || t.startsWith('[패스 참고]') || t.startsWith('[패스 핵심]') || t.startsWith('[빙고·도시락 공략]')) return true;
       return OFFICIAL_PREFIX_REGEX.test(t);
     }
 
@@ -2517,8 +2636,8 @@
     // =========================================================================
     // 4. 영구 저장 스토리지
     // =========================================================================
-    const PERM_STORAGE_KEY = 'elias_pregame_dashboard_v9';
-    const LEGACY_KEYS = ['elias_pregame_dashboard_v8', 'elias_pregame_dashboard_v7', 'elias_pregame_dashboard_v6', 'elias_pregame_dashboard_v5', 'elias_pregame_dashboard_v4', 'elias_pregame_dashboard_v3'];
+    const PERM_STORAGE_KEY = 'elias_pregame_dashboard_v10';
+    const LEGACY_KEYS = ['elias_pregame_dashboard_v9', 'elias_pregame_dashboard_v8', 'elias_pregame_dashboard_v7', 'elias_pregame_dashboard_v6', 'elias_pregame_dashboard_v5', 'elias_pregame_dashboard_v4', 'elias_pregame_dashboard_v3'];
 
     function createInitialState() {
       const now = Date.now();
@@ -2890,8 +3009,8 @@
     // =========================================================================
     // [신규] 일일 무료 엘리프 수급·지출 손익 계산기 & 3.25주년 왕사탕 도시락 시뮬레이터
     // =========================================================================
-    const KING_CANDY_COSTS_DISCOUNT = { 0: 0, 3: 54, 5: 114, 8: 240, 11: 420, 15: 810 };
-    const KING_CANDY_COSTS_NORMAL = { 0: 0, 3: 90, 5: 190, 8: 400, 11: 700, 15: 1350 };
+    const KING_CANDY_COSTS_DISCOUNT = { 0: 0, 3: 54, 5: 114, 7: 192, 8: 240, 9: 288, 11: 420, 13: 576, 15: 810 };
+    const KING_CANDY_COSTS_NORMAL = { 0: 0, 3: 90, 5: 190, 7: 320, 8: 400, 9: 480, 11: 700, 13: 960, 15: 1350 };
     const STAR_CANDY_COSTS_DISCOUNT = { 0: 0, 1: 18, 2: 54, 3: 114, 5: 330 };
     const STAR_CANDY_COSTS_NORMAL = { 0: 0, 1: 30, 2: 90, 3: 190, 5: 550 };
 
@@ -2962,8 +3081,13 @@
         topElifLine.textContent = `• 💎 일일 무엘(${kingCount}충${hasDiscount ? '·할인' : ''} 기준): 수급 +${totalIncome} / 지출 -${totalExpense} = 하루 ${netDaily >= 0 ? '+' : ''}${netDaily} (${netDaily >= 0 ? '월 +' + netMonthly.toLocaleString() : '월 ' + netMonthly.toLocaleString()})`;
       }
 
-      // 3) 3.25주년(12/24 목 업데이트) 왕사탕 도시락 시뮬레이터 계산
-      const days = Number(document.getElementById('selDosirakDays')?.value || 30);
+      // 3) 3.25주년 왕사탕 도시락 + 아이시움 웹상점 통조림 + 빙고 효율(189151593) 시뮬레이터 계산
+      const rawDaysVal = String(document.getElementById('selDosirakDays')?.value || '30');
+      const isDec31Target = rawDaysVal === '30_dec31';
+      const days = Number(rawDaysVal.replace('_dec31', '')) || 30;
+      const webshopCandy = Number(document.getElementById('selDosirakWebshopCandy')?.value || 0);
+      const includeBingo2Weeks = Boolean(document.getElementById('chkDosirakIncludeBingo2Weeks')?.checked);
+
       const dFreeBox = document.getElementById('chkDosirakDailyFreeBox')?.checked ? 100 : 0;
       const dRelic = document.getElementById('chkDosirakRelicOverflow')?.checked ? 350 : 0;
       const dPass = document.getElementById('chkDosirakPassTribute')?.checked ? 100 : 0;
@@ -2971,19 +3095,89 @@
       const dFree200 = document.getElementById('chkDosirakFree200')?.checked ? 100 : 0;
 
       const dailyMailCandy = dFreeBox + dRelic + dPass + dPaid50 + dFree200;
-      const totalMailCandy = dailyMailCandy * days + 999; // 우편함 누적분 + 당일 보유 999개
+      const mailStashedCandy = dailyMailCandy * days;
+      // 빙고 기간(14일) 현장 수급분: (자연회복 288 + 일일 성물/상자/공물 + 일일 충전분 - 테극 200) × 14일
+      const dailyLiveNetForBingo = Math.max(0, 288 + dailyMailCandy + kingCount * 100 - 200);
+      const bingoPeriodCandy = includeBingo2Weeks ? dailyLiveNetForBingo * 14 : 0;
+      const totalMailCandy = mailStashedCandy + 999 + webshopCandy + bingoPeriodCandy;
+
+      // 아카라이브 189151593 빙고 공식:
+      // 1판 클리어 평균 10~11회(2,000~2,200 재화) = 침략 250~275회 = 2,500~2,750 왕사탕 (평균 2,625개)
+      // 1판 완주 시 왕사탕 100개 페이백 재투입 감안 실질 순소모 = 2,525 왕사탕 / 판
+      const netCandyPerBoard = 2525;
+      const boardsCleared = totalMailCandy / netCandyPerBoard;
+      const paybackElif = Math.round(boardsCleared * 180);
+      const paybackKingCandy = Math.round(boardsCleared * 100);
+      const totalValueElif = Math.round(boardsCleared * 730);
+
+      // 적립 기간(+선택 시 빙고 14일) 동안 왕사탕 충전 및 상점 200무엘 왕사탕에 쓴 총 무료 엘리프
+      const totalDaysCharged = days + (includeBingo2Weeks ? 14 : 0);
+      const dailyCandyElifOut = kingCost + (dFree200 > 0 ? 200 : 0);
+      const totalElifSpentOnCandy = dailyCandyElifOut * totalDaysCharged;
+      const netElifAfterDirectPayback = totalElifSpentOnCandy - paybackElif;
+      const netValueGainElif = totalValueElif - totalElifSpentOnCandy;
 
       const savedValEl = document.getElementById('dosirakTotalSavedVal');
       const savedSubEl = document.getElementById('dosirakDailySavedSub');
       if (savedValEl) savedValEl.textContent = `총 ${totalMailCandy.toLocaleString()} 개`;
       if (savedSubEl) {
-        savedSubEl.textContent = `하루 +${dailyMailCandy}개 우편함 적립 × ${days}일 (+보유 상한 999개 포함)`;
+        const parts = [`우편함 +${mailStashedCandy.toLocaleString()}`, `보유 999`];
+        if (webshopCandy > 0) parts.push(`웹상점 +${webshopCandy.toLocaleString()}`);
+        if (bingoPeriodCandy > 0) parts.push(`빙고2주 +${bingoPeriodCandy.toLocaleString()}`);
+        savedSubEl.textContent = parts.join(' · ');
+      }
+
+      const boardsValEl = document.getElementById('dosirakBingoBoardsVal');
+      const paybackSubEl = document.getElementById('dosirakBingoPaybackSub');
+      if (boardsValEl) {
+        boardsValEl.textContent = `약 ${boardsCleared.toFixed(1)} 판 완주 (≈ ${totalValueElif.toLocaleString()} 무엘 가치)`;
+      }
+      if (paybackSubEl) {
+        paybackSubEl.textContent = `직접 페이백: 무료엘리프 +${paybackElif.toLocaleString()}개 · 왕사탕 +${paybackKingCandy.toLocaleString()}개`;
+      }
+
+      const consumeEl = document.getElementById('dosirakConsumeStartText');
+      const netValSubEl = document.getElementById('dosirakNetValueSub');
+      if (consumeEl) {
+        consumeEl.textContent =
+          totalElifSpentOnCandy > 0
+            ? `${kingCount}충 지출 -${totalElifSpentOnCandy.toLocaleString()} 무엘 (페이백 후 ${netElifAfterDirectPayback > 0 ? '-' + netElifAfterDirectPayback.toLocaleString() : '+' + Math.abs(netElifAfterDirectPayback).toLocaleString()})`
+            : `무충전 (0 무엘 지출 · 순수 페이백 +${paybackElif.toLocaleString()} 무엘)`;
+      }
+      if (netValSubEl) {
+        netValSubEl.textContent =
+          netValueGainElif >= 0
+            ? `전체 재화(판당 730무엘) 환산 시 +${netValueGainElif.toLocaleString()} 엘리프 순이득!`
+            : `전체 재화 환산 대비 ${netValueGainElif.toLocaleString()} 엘리프 (무엘 잔고 확인 권장)`;
+        netValSubEl.className = netValueGainElif >= 0
+          ? 'text-[11px] font-semibold text-green-dark'
+          : 'text-[11px] font-semibold text-red-dark';
+      }
+
+      // 빙고 판수별 예상 획득 재화 6종 카드 업데이트
+      const rElif = document.getElementById('bingoRewardElif');
+      const rCert = document.getElementById('bingoRewardCert');
+      const rGold = document.getElementById('bingoRewardGold');
+      const rCandies = document.getElementById('bingoRewardCandies');
+      const rMacarons = document.getElementById('bingoRewardMacarons');
+      const rBoxes = document.getElementById('bingoRewardBoxes');
+      if (rElif) rElif.textContent = `+${paybackElif.toLocaleString()} 개`;
+      if (rCert) rCert.textContent = `+${Math.round(boardsCleared * 20).toLocaleString()} 개`;
+      if (rGold) rGold.textContent = `+${Math.round(boardsCleared * 318000).toLocaleString()} G`;
+      if (rCandies) rCandies.textContent = `왕 +${paybackKingCandy.toLocaleString()} / 별 +${Math.round(boardsCleared * 40).toLocaleString()}`;
+      if (rMacarons) {
+        const mokaMan = ((boardsCleared * 17500) / 10000).toFixed(1);
+        const shukaMan = ((boardsCleared * 4800) / 10000).toFixed(1);
+        rMacarons.textContent = `모 ${mokaMan}만 / 슈 ${shukaMan}만`;
+      }
+      if (rBoxes) {
+        rBoxes.textContent = `정석 ${Math.round(boardsCleared * 110)} · 빛 ${Math.round(boardsCleared * 30)} · 연성 ${Math.round(boardsCleared * 21)}`;
       }
 
       const startRecEl = document.getElementById('dosirakStartRecommendedText');
       const startSubEl = document.getElementById('dosirakStartCountdownSub');
       const nowMs = getEffectiveNowMs();
-      const targetUpdateMs = new Date('2026-12-24T11:00:00+09:00').getTime();
+      const targetUpdateMs = new Date(isDec31Target ? '2026-12-31T11:00:00+09:00' : '2026-12-24T11:00:00+09:00').getTime();
       const startTargetMs = targetUpdateMs - days * 86400 * 1000;
       const startKst = getKstDateParts(startTargetMs);
       const daysUntilStart = Math.ceil((startTargetMs - nowMs) / (86400 * 1000));
@@ -2992,10 +3186,11 @@
         startRecEl.textContent = `${startKst.month + 1}월 ${startKst.date}일 시작 (${days}일 적립)`;
       }
       if (startSubEl) {
+        const targetLabel = isDec31Target ? '12/31 신캐 주간 오픈' : '12/24 크리스마스 점검 오픈';
         startSubEl.textContent =
           daysUntilStart > 0
-            ? `도시락 개시일까지 D-${daysUntilStart} (12/24 점검 날 첫 우편 만료 전 개봉)`
-            : `지금 바로 적립 진행 구간! (12/24 점검 직후부터 개봉)`;
+            ? `도시락 개시일까지 D-${daysUntilStart} (${targetLabel} 기준)`
+            : `지금 바로 적립 진행 구간! (${targetLabel} 직후부터 개봉)`;
       }
     }
 
@@ -3678,7 +3873,7 @@
       for (const n of notices) {
         if (!n || !n.title) continue;
         const t = n.title;
-        if (t.includes('3주년 이벤트 모아보기') || t.startsWith('[갤러리 공지]') || t.startsWith('[패스 참고]')) continue;
+        if (t.includes('3주년 이벤트 모아보기') || t.startsWith('[갤러리 공지]') || t.startsWith('[패스 참고]') || t.startsWith('[빙고·도시락 공략]')) continue;
 
         const isPickupOrTheater =
           t.includes('픽업') || t.includes('테마극장') || t.includes('사도 모집') || n.category === '이벤트';
