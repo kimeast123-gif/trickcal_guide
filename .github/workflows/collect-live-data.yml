@@ -6,6 +6,7 @@ on:
     - cron: '7,37 * * * *'
   workflow_dispatch: {} # Actions 탭에서 수동 실행 가능
   push:
+    branches: [main]
     paths:
       - 'data/manual.json' # 수동 데이터를 고치면 바로 반영
       - 'scripts/collect-live-data.mjs'
@@ -22,11 +23,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
-          node-version: '20'
+          node-version: '22'
 
       - name: 라운지 공지·쿠폰 수집
         run: node scripts/collect-live-data.mjs
@@ -41,4 +42,10 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add live_data.json
           git commit -m "chore: 라운지 공지 데이터 갱신"
-          git push
+          # 수집 중에 다른 커밋이 올라왔을 수 있으므로 최신 main 위로 올린 뒤 푸시 (최대 3회 재시도)
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            echo "푸시 재시도 $i"
+            sleep 5
+          done
+          exit 1
