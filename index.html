@@ -1773,7 +1773,7 @@
       </div>
     </section>
 
-    <!-- 2. 메인 영역: 좌측 [동적 갱신 주차별·월말 만료 체크리스트 & 핵심 마감 일정] / 우측 [공식 라운지 & 갤러리 공지 + 쿠폰] -->
+    <!-- 2. 메인 영역: 좌측 [동적 갱신 주차별·월말 만료 체크리스트 & 핵심 마감 일정] / 우측 [공식 라운지 공지 + 쿠폰] -->
     <section class="grid grid-cols-1 lg:grid-cols-12 gap-4" data-mobile-panel="checklist schedule community">
 
       <!-- 좌측 (7칸): 시점별 자동 갱신 체크리스트 & 핵심 픽업·테마극장 마감 타임라인 -->
@@ -1961,7 +1961,7 @@
 
       </div>
 
-      <!-- 우측 (5칸): 상단 공식 쿠폰 원클릭 복사 박스 + 공식 라운지 & 트릭컬 갤러리 공지 피드 -->
+      <!-- 우측 (5칸): 상단 공식 쿠폰 원클릭 복사 박스 + 공식 라운지 공지 피드 -->
       <article class="ui-card p-4 sm:p-5 lg:col-span-5 flex flex-col gap-3.5" data-mobile-panel="community">
         <!-- 상단 배치: 사용 가능 공식 쿠폰 원클릭 복사 박스 -->
         <div class="ui-subbox p-3 flex flex-col gap-2">
@@ -2037,88 +2037,18 @@
         <div class="flex flex-col gap-3">
           <div class="flex flex-wrap items-center justify-between gap-2 pb-2 border-b">
             <div class="flex flex-col gap-0.5 min-w-0">
-              <h2 class="font-pop text-base sm:text-lg text-main">공식 라운지 공지 & 갤러리 마감 피드</h2>
+              <h2 class="font-pop text-base sm:text-lg text-main">공식 라운지 공지</h2>
               <span id="loungeLastUpdatedText" class="text-[11px] text-muted">라운지 공지 불러오는 중…</span>
             </div>
             <div class="flex flex-wrap items-center gap-1">
               <button type="button" data-notice-filter="all" class="notice-filter-btn ui-tag ui-tag-active cursor-pointer">전체</button>
               <button type="button" data-notice-filter="점검·업데이트" class="notice-filter-btn ui-tag cursor-pointer">점검·업데이트</button>
-              <button type="button" data-notice-filter="완장·마감" class="notice-filter-btn ui-tag cursor-pointer">마감·가이드</button>
             </div>
           </div>
 
-          <!-- 크롤링된 공식 라운지 & 갤러리 공지 리스트 -->
+          <!-- 공식 라운지 공지 리스트 (live_data.json) -->
           <div id="loungeNoticeList" class="flex flex-col gap-2">
-            <a href="https://arca.live/b/trickcal/188744950" target="_blank" rel="noopener noreferrer" data-notice-cat="쿠폰" class="ui-subbox ui-subbox-hover px-3 py-2.5 flex items-center justify-between gap-2 border-2 border-[#c85219]">
-              <div class="flex items-center gap-2 min-w-0">
-                <span class="px-2 py-0.5 rounded-md border text-[10px] font-pop shrink-0 badge-coupon">쿠폰·신규</span>
-                <span class="text-xs sm:text-sm font-bold text-main truncate">[쿠폰] 빼빼로데이 기념 쿠폰 안내 (11DUDUGIFT11 · 엘리프 1,111개 + 초콜릿 아이스크림 11개, ~11/26)</span>
-              </div>
-              <span class="text-[11px] text-red-dark font-bold shrink-0">2026-11-11 ↗</span>
-            </a>
-            <a href="https://game.naver.com/lounge/Trickcal/board/detail/8413822" target="_blank" rel="noopener noreferrer" data-notice-cat="점검·업데이트" class="ui-subbox ui-subbox-hover px-3 py-2.5 flex items-center justify-between gap-2">
-              <div class="flex items-center gap-2 min-w-0">
-                <span class="px-2 py-0.5 rounded-md border text-[10px] font-pop shrink-0 badge-maint">점검·업데이트</span>
-                <span class="text-xs sm:text-sm font-semibold text-main truncate">[업데이트PV] 11월 5일(목) 신규 업데이트 안내 (신규 사도 「두두」 픽업 &amp; 테마극장 공룡 대침공)</span>
-              </div>
-              <span class="text-[11px] text-muted shrink-0">2026-11-05 ↗</span>
-            </a>
-            <a href="https://game.naver.com/lounge/Trickcal/board/detail/8399569" target="_blank" rel="noopener noreferrer" data-notice-cat="쿠폰" class="ui-subbox ui-subbox-hover px-3 py-2.5 flex items-center justify-between gap-2">
-              <div class="flex items-center gap-2 min-w-0">
-                <span class="px-2 py-0.5 rounded-md border text-[10px] font-pop shrink-0 badge-coupon">쿠폰·수상</span>
-                <span class="text-xs sm:text-sm font-bold text-main truncate">[쿠폰] 포브스 코리아 선정 프리미엄 브랜드 1위 기념 쿠폰 안내 (엘리프 2,026개)</span>
-              </div>
-              <span class="text-[11px] text-red-dark font-bold shrink-0">2026-11-02 ↗</span>
-            </a>
-            <a href="https://game.naver.com/lounge/Trickcal/board/detail/8395684" target="_blank" rel="noopener noreferrer" data-notice-cat="쿠폰" class="ui-subbox ui-subbox-hover px-3 py-2.5 flex items-center justify-between gap-2">
-              <div class="flex items-center gap-2 min-w-0">
-                <span class="px-2 py-0.5 rounded-md border text-[10px] font-pop shrink-0 badge-coupon">쿠폰</span>
-                <span class="text-xs sm:text-sm font-semibold text-main truncate">[쿠폰] 해피 할로윈! 깜짝 쿠폰 안내 (BOLLOWEEN · 왕사탕/별사탕 각 1,000개, ~11/12)</span>
-              </div>
-              <span class="text-[11px] text-muted shrink-0">2026-11-01 ↗</span>
-            </a>
-            <a href="https://gall.dcinside.com/mgallery/board/lists/?id=rollthechess&amp;exception_mode=notice" target="_blank" rel="noopener noreferrer" data-notice-cat="완장·마감" class="ui-subbox ui-subbox-hover px-3 py-2.5 flex items-center justify-between gap-2">
-              <div class="flex items-center gap-2 min-w-0">
-                <span class="px-2 py-0.5 rounded-md border text-[10px] font-pop shrink-0 badge-gall">완장·마감</span>
-                <span class="text-xs sm:text-sm font-semibold text-main truncate">[갤러리 공지] 트릭컬 마이너 갤러리 주차별·월말 마감 정리 및 통합 공지 확인</span>
-              </div>
-              <span class="text-[11px] text-muted shrink-0">상시 공지 ↗</span>
-            </a>
-            <a href="https://arca.live/b/trickcal/163414828" target="_blank" rel="noopener noreferrer" data-notice-cat="완장·마감" class="ui-subbox ui-subbox-hover px-3 py-2.5 flex items-center justify-between gap-2">
-              <div class="flex items-center gap-2 min-w-0">
-                <span class="px-2 py-0.5 rounded-md border text-[10px] font-pop shrink-0 badge-gall">완장·마감</span>
-                <span class="text-xs sm:text-sm font-semibold text-main truncate">[패스 참고] 주간퀘(월요일 04시 초기화) 보류 시 신규 사복패스·월간패스 포인트 선점 가이드</span>
-              </div>
-              <span class="text-[11px] text-muted shrink-0">패스 팁 ↗</span>
-            </a>
-            <a href="https://game.naver.com/lounge/Trickcal/board/detail/8377618" target="_blank" rel="noopener noreferrer" data-notice-cat="점검·업데이트" class="ui-subbox ui-subbox-hover px-3 py-2.5 flex items-center justify-between gap-2">
-              <div class="flex items-center gap-2 min-w-0">
-                <span class="px-2 py-0.5 rounded-md border text-[10px] font-pop shrink-0 badge-maint">점검·업데이트</span>
-                <span class="text-xs sm:text-sm font-semibold text-main truncate">[업데이트] 10월 29일(목) 정기점검 및 업데이트 예정 안내 (버터 사복패스·11월 패스)</span>
-              </div>
-              <span class="text-[11px] text-muted shrink-0">2026-10-28 ↗</span>
-            </a>
-            <a href="https://game.naver.com/lounge/Trickcal/board/detail/8377635" target="_blank" rel="noopener noreferrer" data-notice-cat="이벤트" class="ui-subbox ui-subbox-hover px-3 py-2.5 flex items-center justify-between gap-2">
-              <div class="flex items-center gap-2 min-w-0">
-                <span class="px-2 py-0.5 rounded-md border text-[10px] font-pop shrink-0 badge-event">이벤트</span>
-                <span class="text-xs sm:text-sm font-semibold text-main truncate">[이벤트] 10월 29일(목) 신규 이벤트 안내 (버터 픽업·사복패스·대충돌 광기)</span>
-              </div>
-              <span class="text-[11px] text-muted shrink-0">2026-10-28 ↗</span>
-            </a>
-            <a href="https://game.naver.com/lounge/Trickcal/board/detail/8078422" target="_blank" rel="noopener noreferrer" data-notice-cat="점검·업데이트" class="ui-subbox ui-subbox-hover px-3 py-2.5 flex items-center justify-between gap-2">
-              <div class="flex items-center gap-2 min-w-0">
-                <span class="px-2 py-0.5 rounded-md border text-[10px] font-pop shrink-0 badge-maint">점검·업데이트</span>
-                <span class="text-xs sm:text-sm font-semibold text-main truncate">[업데이트] 10월 22일(목) 정기점검 및 주요 업데이트 내역 안내 (코페 픽업·테마극장)</span>
-              </div>
-              <span class="text-[11px] text-muted shrink-0">2026-10-22 ↗</span>
-            </a>
-            <a href="https://game.naver.com/lounge/Trickcal/board/detail/7987866" target="_blank" rel="noopener noreferrer" data-notice-cat="이벤트" class="ui-subbox ui-subbox-hover px-3 py-2.5 flex items-center justify-between gap-2">
-              <div class="flex items-center gap-2 min-w-0">
-                <span class="px-2 py-0.5 rounded-md border text-[10px] font-pop shrink-0 badge-event">이벤트</span>
-                <span class="text-xs sm:text-sm font-semibold text-main truncate">[이벤트] 신규 사도 「코페」 픽업 모집 및 테마극장 〈오늘도 수고했어! 커피 한 잔의 여유〉 (~11/5)</span>
-              </div>
-              <span class="text-[11px] text-muted shrink-0">2026-10-22 ↗</span>
-            </a>
+            <p class="text-[11px] text-muted">공지를 불러오는 중입니다…</p>
           </div>
         </div>
       </article>
@@ -2131,59 +2061,8 @@
       <span>
         본 위젯은 비영리 팬 제작 보조 도구이며, 사용된 인게임 이미지 및 지식재산권(IP)은 <strong>㈜에피드게임즈(EPID Games)</strong>에 귀속됩니다.
       </span>
-      <span
-        id="footerVersionBadge"
-        onclick="window.trickcalSecretAdminTap && window.trickcalSecretAdminTap(event)"
-        class="ui-tag text-[10px] select-none cursor-pointer"
-        title="버전 정보 (연속 3회 탭 시 제작자 통계 열기)"
-      >v1.5</span>
+      <span id="footerVersionBadge" class="ui-tag text-[10px]">v1.6</span>
     </footer>
-
-    <!-- [제작자 전용 시크릿 방문자 통계 & 시점 검수 패널: 평소에는 hidden 상태로 완전 숨김, 하단 v1.5 배지 3번 연속 클릭 시에만 표시] -->
-    <div id="secretOwnerStatsBox" class="hidden ui-card p-3.5 flex flex-col gap-2.5 border-2 border-[#c85219]">
-      <div class="flex items-center justify-between gap-2">
-        <div class="flex items-center gap-1.5">
-          <span class="ui-tag ui-tag-danger text-[10px]">🔒 제작자 전용 도구</span>
-          <strong class="font-pop text-xs sm:text-sm text-main">실시간 트래픽 통계 & 시점 전환 테스트</strong>
-        </div>
-        <button type="button" onclick="document.getElementById('secretOwnerStatsBox').classList.add('hidden')" class="ui-btn ui-btn-ghost px-2 py-0.5 text-[11px]">닫기 ✕</button>
-      </div>
-      <div class="ui-subbox p-2.5 flex flex-wrap items-center justify-between gap-3">
-        <div class="flex flex-col gap-1">
-          <span class="text-xs font-semibold text-main">오늘 방문 / 누적 총 방문 배지 (Hits.sh 실시간 집계)</span>
-          <span id="secretAbacusCountText" class="text-[11px] text-muted">백업 API 집계 불러오는 중...</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <img
-            id="secretOwnerBadgeImg"
-            src="https://hits.sh/kimeast123-gif.github.io/trickcal_guide.svg?view=today-total&style=for-the-badge&label=TODAY%20%2F%20TOTAL&color=c85219&labelColor=5a3e28"
-            alt="방문자 통계 배지"
-            class="h-6 rounded"
-          />
-          <a
-            href="https://hits.sh/kimeast123-gif.github.io/trickcal_guide/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="ui-btn ui-btn-ghost px-2.5 py-1 text-[11px]"
-          >상세 달력 ↗</a>
-        </div>
-      </div>
-      <div class="ui-subbox p-2.5 flex flex-wrap items-center justify-between gap-2">
-        <div class="flex flex-col gap-0.5">
-          <span class="text-xs font-semibold text-main">검수용 시점 미리보기 (주차·월간 자동 전환 테스트)</span>
-          <span class="text-[11px] text-muted">선택한 미래 시점 기준으로 브리핑·체크리스트·타임라인이 어떻게 바뀌는지 확인합니다</span>
-        </div>
-        <select
-          id="timeLifecyclePreviewSelect"
-          onchange="window.trickcalChangePreview && window.trickcalChangePreview(this.value)"
-          class="ui-select hidden"
-          aria-label="시점 미리보기 선택"
-        >
-          <option value="live" data-icon="⚡" data-color="#2eb8ac" selected>현재 실시간 (자동 전환)</option>
-          <!-- 나머지 옵션은 페이지가 열릴 때 '다가오는 날짜'로 자동 생성 (PREVIEW_MODES) -->
-        </select>
-      </div>
-    </div>
 
     <!-- [모바일 전용 하단 앱 탭 바] 기본 '전체 한눈에(all)'로 모든 데이터 누락 없이 표시 & 원하는 탭 단독 필터 지원 -->
     <nav id="mobileBottomNav" class="mobile-bottom-nav" aria-label="모바일 하단 메뉴 탭">
@@ -2405,13 +2284,6 @@
 
     const DEFAULT_LOUNGE_NOTICES = [
       {
-        id: 'arca_bingo_189151593',
-        category: '완장·마감',
-        title: '[빙고·도시락 공략] 3.25주년 도시락 시즌 대비 빙고 효율 계산 (1판=730무엘 가치·100왕사탕당 +28무엘) & 아이시움 웹상점 무제한 통조림 팁',
-        date: '2026-11-14',
-        url: 'https://arca.live/b/trickcal/189151593'
-      },
-      {
         id: 'arca_maint_188773554',
         category: '점검·업데이트',
         title: '[업데이트] 11월 12일(목) 업데이트 안내 (엘리아스 프론티어 보스 「니펠/죽음」 · 테마 사복 7종 & 스페셜 픽업 · 나들이 · 프리셋 공유)',
@@ -2452,20 +2324,6 @@
         title: '[쿠폰] 해피 할로윈! 깜짝 쿠폰 안내 (~11/12 마감 · BOLLOWEEN 왕사탕/별사탕 1,000개)',
         date: '2026-11-01',
         url: 'https://game.naver.com/lounge/Trickcal/board/detail/8395684'
-      },
-      {
-        id: 'dc_rollthechess_notice',
-        category: '완장·마감',
-        title: '[갤러리 공지] 트릭컬 마이너 갤러리 주차별·월말 마감 정리 및 통합 공지 확인',
-        date: '상시 공지',
-        url: 'https://gall.dcinside.com/mgallery/board/lists/?id=rollthechess&exception_mode=notice'
-      },
-      {
-        id: 'arca_pass_tip',
-        category: '완장·마감',
-        title: '[패스 참고] 주간퀘(월요일 04시 초기화) 보류 시 신규 사복패스·월간패스 포인트 선점 가이드',
-        date: '패스 팁',
-        url: 'https://arca.live/b/trickcal/163414828'
       },
       {
         id: '8377618',
@@ -2708,7 +2566,6 @@
     function isValidOfficialTitleOnly(title) {
       if (!title || typeof title !== 'string') return false;
       const t = title.trim();
-      if (t.startsWith('[갤러리 공지]') || t.startsWith('[패스 참고]') || t.startsWith('[패스 핵심]') || t.startsWith('[빙고·도시락 공략]')) return true;
       return OFFICIAL_PREFIX_REGEX.test(t);
     }
 
@@ -3091,7 +2948,7 @@
       const minWindowMs = startMs + 12 * 7 * 86400 * 1000 - 60 * 1000; // 12주차 목요일 10:59
       const elapsedDays = Math.max(0, Math.floor((nowMs - startMs) / (86400 * 1000)));
       const currentWeekNum = Math.floor(elapsedDays / 7) + 1;
-      const remainDays = Math.max(0, Math.ceil((endMs - nowMs) / (86400 * 1000)));
+      const remainDays = Math.max(0, kstDayDiff(nowMs, endMs)); // 달력 기준 D-day (일정 타임라인과 통일)
       const startKst = getKstDateParts(startMs);
       const minKst = getKstDateParts(minWindowMs);
       const endKst = getKstDateParts(endMs);
@@ -3142,6 +2999,7 @@
       let activeRelicPassName = nowMs < duduEndMs ? '「두두의 야광 스티커북」 (성물 공물탑 스킨 패스)' : '테마극장 성물 패스 (공물탑 외형 미니 패스)';
       let activeCostumePassTitle = nowMs < butterPassEndMs ? '[버터] 사복 패스 〈별밤 산책 대장〉 (~11/12 10:59)' : '';
       let activeCostumePassUrl = 'https://game.naver.com/lounge/Trickcal/board/detail/8377635';
+      let activeApostleEndMs = nowMs < duduEndMs ? duduEndMs : null;
 
       for (const n of notices) {
         if (!n || !n.title) continue;
@@ -3154,6 +3012,8 @@
           if (m && m[1]) {
             activeTheaterTitle = `〈${m[1].trim()}〉`;
             activeTheaterUrl = n.url || activeTheaterUrl;
+            // 성물 패스(테극 미니패스)는 테마극장에 딸린 패스 → 사도 이름이 아니라 테마극장 이름으로 표시
+            activeRelicPassName = `테마극장 ${activeTheaterTitle} 성물 패스 (공물탑 스킨 미니 패스)`;
             break;
           }
         }
@@ -3178,9 +3038,12 @@
             if (candidate !== '코페' && candidate !== '버터') {
               activeApostleName = candidate;
               activeApostleUrl = n.url || activeApostleUrl;
+              const p = getNoticePeriod(n, nowMs);
+              if (p) activeApostleEndMs = p.endMs;
               if (candidate !== '두두') {
-                activeApostleSummary = `${t.replace(/^\[[^\]]+\]\s*/, '')} (라운지 실시간 자동 감지)`;
-                activeRelicPassName = `${candidate} 테마극장 성물 패스 (공물탑 스킨 미니 패스)`;
+                activeApostleSummary = p
+                  ? `픽업 기간 ${formatKstShort(p.startMs)} ~ ${formatKstShort(p.endMs)} · 공식 공지 「${cleanScheduleTitle(n)}」`
+                  : `공식 공지 「${cleanScheduleTitle(n)}」`;
               }
               break;
             }
@@ -3208,6 +3071,7 @@
         activeApostleName,
         activeApostleSummary,
         activeApostleUrl,
+        activeApostleEndMs,
         activeRelicPassName,
         activeCostumePassTitle,
         activeCostumePassUrl
@@ -3249,6 +3113,11 @@
     function getKstTodayIso(nowMs = getEffectiveNowMs()) {
       const k = getKstDateParts(nowMs);
       return `${k.year}-${formatTwo(k.month + 1)}-${formatTwo(k.date)}`;
+    }
+
+    // 두 시각 사이의 KST 달력 날짜 차이 (D-day 표기 통일용)
+    function kstDayDiff(fromMs, toMs) {
+      return daysBetweenIso(getKstTodayIso(fromMs), getKstTodayIso(toMs));
     }
 
     function daysBetweenIso(fromIso, toIso) {
@@ -3864,7 +3733,7 @@
 
       const launchCounterEl = document.getElementById('launchDayCounterText');
       if (launchCounterEl) {
-        launchCounterEl.textContent = `오픈 2023.09.27 (+${daysSinceLaunch.toLocaleString()}일 · 3주년 +${daysSinceThirdAnniv}일)`;
+        launchCounterEl.textContent = `오픈 2023.09.27 (출시 ${daysSinceLaunch.toLocaleString()}일째 · 3주년 +${daysSinceThirdAnniv}일)`;
       }
 
       const nextAnniv =
@@ -4049,9 +3918,10 @@
               scope: 'weekly',
               badge: '신규 픽업 · 테극',
               urgent: false,
-              title: `신규 픽업 사도 「${liveCtx.activeApostleName}」 모집 & 테마극장 미니게임·프론티어 확인`,
+              // (예전 문구 '테마극장 미니게임·프론티어 확인'은 11/19에 끝난 프론티어를 계속 안내하던 고정 문구라 제거)
+              title: `신규 픽업 사도 「${liveCtx.activeApostleName}」 모집 확인`,
               desc: liveCtx.activeApostleSummary,
-              deadlineLabel: '픽업 진행 중',
+              deadlineLabel: liveCtx.activeApostleEndMs ? `~${formatKstShort(liveCtx.activeApostleEndMs)} 마감` : '픽업 진행 중',
               url: liveCtx.activeApostleUrl
             });
           }
@@ -4316,7 +4186,7 @@
       for (const n of notices) {
         if (!n || !n.title) continue;
         const t = n.title;
-        if (t.includes('3주년 이벤트 모아보기') || t.startsWith('[갤러리 공지]') || t.startsWith('[패스 참고]') || t.startsWith('[빙고·도시락 공략]')) continue;
+        if (t.includes('3주년 이벤트 모아보기')) continue;
 
         const isPickupOrTheater =
           t.includes('픽업') || t.includes('테마극장') || t.includes('사도 모집') || n.category === '이벤트';
@@ -4521,23 +4391,24 @@
 
       container.innerHTML = filtered
         .map((ev) => {
+          // D-day는 달력(KST 날짜) 기준으로 통일: 11/20 → 12/3 마감 = D-13 (예전에는 남은 '만 일수'를 써서 D-12로 표시돼 하루씩 어긋났음)
           let ddayLabel = '';
           if (ev.isUpcoming) {
             const untilStartSec = Math.max(0, Math.floor((ev.startMs - nowMs) / 1000));
-            const sDays = Math.floor(untilStartSec / 86400);
             const sHours = Math.floor((untilStartSec % 86400) / 3600);
-            ddayLabel = sDays > 0 ? `오픈 D-${sDays} (${sHours}시간 후)` : `${sHours}시간 후 오픈`;
+            const sDday = kstDayDiff(nowMs, ev.startMs);
+            ddayLabel = sDday > 0 ? `오픈 D-${sDday}` : `${Math.floor(untilStartSec / 3600)}시간 ${Math.floor((untilStartSec % 3600) / 60)}분 후 오픈`;
+            if (sDday > 0 && untilStartSec < 86400) ddayLabel += ` (${sHours}시간 후)`;
           } else {
             const remainSec = Math.max(0, Math.floor(ev.remainMs / 1000));
             const rDays = Math.floor(remainSec / 86400);
             const rHours = Math.floor((remainSec % 86400) / 3600);
             const rMins = Math.floor((remainSec % 3600) / 60);
-            if (rDays === 0) {
+            const eDday = kstDayDiff(nowMs, ev.endMs);
+            if (eDday === 0) {
               ddayLabel = `오늘 마감 · ${rHours}시간 ${rMins}분 남음`;
-            } else if (rDays <= 3) {
-              ddayLabel = `D-${rDays} · ${rDays}일 ${rHours}시간 남음`;
             } else {
-              ddayLabel = `D-${rDays} (${rHours}시간)`;
+              ddayLabel = rDays > 0 ? `D-${eDday} · ${rDays}일 ${rHours}시간 남음` : `D-${eDday} · ${rHours}시간 ${rMins}분 남음`;
             }
           }
 
@@ -4582,7 +4453,7 @@
     }
 
     // =========================================================================
-    // 8. 공식 라운지 & DC 갤러리 공지 피드 + 쿠폰 렌더링
+    // 8. 공식 라운지 공지 피드 + 쿠폰 렌더링
     // =========================================================================
     // "2026-11-20" → "11/20" (모바일에서 제목이 보일 자리를 확보)
     function formatNoticeDateShort(raw) {
@@ -4607,15 +4478,6 @@
               n.title.includes('노트')
             );
           }
-          if (state.noticeFilter === '완장·마감') {
-            return (
-              n.category.includes('완장') ||
-              n.category.includes('마감') ||
-              n.title.includes('마감') ||
-              n.title.includes('패스') ||
-              n.title.includes('갤러리')
-            );
-          }
           return true;
         });
 
@@ -4628,8 +4490,7 @@
               item.title.includes('점검') ||
               item.title.includes('업데이트');
             const isCoupon = item.category.includes('쿠폰') || item.title.includes('[쿠폰]');
-            const isGall = item.category.includes('완장') || item.category.includes('마감');
-            const badgeStyle = isCoupon ? 'badge-coupon' : isGall ? 'badge-gall' : isMaint ? 'badge-maint' : 'badge-event';
+            const badgeStyle = isCoupon ? 'badge-coupon' : isMaint ? 'badge-maint' : 'badge-event';
             const safeUrl = sanitizeSafeExternalUrl(item.url);
 
             return `
@@ -4861,7 +4722,6 @@
     async function autoCrawlNaverLoungeFeed(showFeedbackToast = false) {
       const lastUpdatedText = document.getElementById('loungeLastUpdatedText');
       const syncStatusEl = document.getElementById('syncStatusSummaryText');
-      const pinnedGuides = DEFAULT_LOUNGE_NOTICES.slice(0, 3);
 
       // 1) 선택적 원격 JSON 동기화 먼저 시도
       const remoteOk = await syncRemoteDataJson();
@@ -4872,63 +4732,6 @@
         if (lastUpdatedText) lastUpdatedText.textContent = state.lastSyncLabel;
         if (showFeedbackToast) showToast('라운지 공식 공지 수집 데이터를 최신 상태로 불러왔습니다.');
         return;
-      }
-
-      // 2) 로컬 데몬(127.0.0.1:8765) 연동 시도
-      const isLocalContext =
-        window.location.protocol === 'file:' ||
-        window.location.protocol === 'http:' ||
-        window.location.hostname === '127.0.0.1' ||
-        window.location.hostname === 'localhost';
-
-      if (isLocalContext) {
-        try {
-          const res = await fetch('http://127.0.0.1:8765/api/state', { mode: 'cors' });
-          if (res.ok) {
-            const data = await res.json();
-            const mergedNotices = [...pinnedGuides];
-            if (Array.isArray(data.dc_notices)) {
-              for (const dc of data.dc_notices.slice(0, 2)) {
-                const safeNo = String((dc && dc.no) || '').trim();
-                if (!SAFE_NUMERIC_ID_RE.test(safeNo)) continue;
-                mergedNotices.push({
-                  id: `dc_${safeNo}`,
-                  category: '완장·마감',
-                  title: `[갤러리 공지] ${String(dc.title || '').slice(0, 140)}`,
-                  date: '갤공지',
-                  url: `https://gall.dcinside.com/mgallery/board/view/?id=rollthechess&no=${safeNo}`
-                });
-              }
-            }
-            if (Array.isArray(data.notices) && data.notices.length > 0) {
-              for (const n of data.notices) {
-                if (n && isValidOfficialTitleOnly(n.title)) {
-                  const safeId = String(n.id || '').trim();
-                  mergedNotices.push({
-                    id: safeId,
-                    category: String(n.category || '공지').slice(0, 24),
-                    title: String(n.title || '').slice(0, 160),
-                    date: String(n.date || '').slice(0, 20),
-                    url: SAFE_NUMERIC_ID_RE.test(safeId)
-                      ? `https://game.naver.com/lounge/Trickcal/board/detail/${safeId}`
-                      : sanitizeSafeExternalUrl(n.url)
-                  });
-                }
-              }
-            }
-            state.notices = mergedNotices;
-            const kst = getKstDateParts();
-            state.lastSyncLabel = `로컬 데몬 + 라운지 실시간 연동됨 (${formatTwo(kst.hours)}:${formatTwo(kst.minutes)})`;
-            if (syncStatusEl) syncStatusEl.textContent = state.lastSyncLabel;
-            saveState();
-            updateStrategicBriefingBar();
-            renderExpirationChecklist();
-            renderScheduleTimeline();
-            renderLoungeNoticesAndCoupons();
-            if (showFeedbackToast) showToast('로컬 데몬 및 공식 라운지 최신 공지·픽업 일정을 동기화했습니다.');
-            return;
-          }
-        } catch (e) {}
       }
 
       // 3) 무계정 네이버 공식 라운지 API 실시간 크롤링 (고정 공지 + 공식 공지 보드 + 최신 글 동시 탐색)
@@ -5543,26 +5346,6 @@
         document.querySelectorAll('.trickcal-dropdown.open').forEach((el) => el.classList.remove('open'));
       });
 
-      const previewSelect = document.getElementById('timeLifecyclePreviewSelect');
-      if (previewSelect) {
-        // 다가오는 실제 날짜로 미리보기 옵션 생성 (예: "11/26(목) 18:00 · 목요일 정기점검 완료 후")
-        const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
-        const nowForLabels = Date.now();
-        for (const [value, mode] of Object.entries(PREVIEW_MODES)) {
-          const k = getKstDateParts(mode.at(nowForLabels));
-          const opt = document.createElement('option');
-          opt.value = value;
-          opt.setAttribute('data-icon', mode.icon);
-          opt.setAttribute('data-color', mode.color);
-          opt.textContent = `${k.month + 1}/${k.date}(${dayNames[k.day]}) ${formatTwo(k.hours)}:00 · ${mode.label}`;
-          previewSelect.appendChild(opt);
-        }
-        previewSelect.value = state.previewMode || 'live';
-        // 변경 처리는 select의 인라인 onchange(trickcalChangePreview) 한 곳에서만 수행
-        // (예전에는 change 리스너가 하나 더 있어 렌더링과 토스트가 두 번씩 실행됐음)
-      }
-
-      if (previewSelect) enhanceSelectWithTrickcalDropdown(previewSelect);
       const relicCanvas = document.getElementById('relicCompositeCanvas');
       const avatarInput = document.getElementById('relicAvatarUpload');
       const clearAvatarBtn = document.getElementById('btnClearRelicAvatar');
@@ -6013,60 +5796,6 @@
         renderLoungeNoticesAndCoupons();
         showToast('숨겼던 쿠폰을 다시 표시했습니다.');
       };
-
-      // [제작자 전용 시크릿 통계 확인: 하단 v1.5 배지 3회 연속 클릭 또는 URL에 ?stats=1 포함 시 활성화]
-      let adminTapCount = 0;
-      let adminTapTimer = null;
-      let latestAbacusTotal = null;
-
-      // 백그라운드 무가입 JSON 카운터(Abacus) 동시 집계
-      try {
-        const isLiveHost = window.location.hostname.includes('github.io') || window.location.protocol.startsWith('http');
-        const abacusEndpoint = isLiveHost
-          ? 'https://abacus.jasoncameron.dev/hit/kimeast123_trickcal_guide/visits'
-          : 'https://abacus.jasoncameron.dev/get/kimeast123_trickcal_guide/visits';
-        fetch(abacusEndpoint, { mode: 'cors' })
-          .then((r) => (r.ok ? r.json() : null))
-          .then((d) => {
-            if (d && typeof d.value === 'number') {
-              latestAbacusTotal = d.value;
-              const el = document.getElementById('secretAbacusCountText');
-              if (el) el.textContent = `JSON 카운터 누적 호출 수: 총 ${d.value.toLocaleString()}회 접속됨`;
-            }
-          })
-          .catch(() => {});
-      } catch (e) {}
-
-      window.trickcalSecretAdminTap = function (ev) {
-        if (ev && ev.stopPropagation) ev.stopPropagation();
-        adminTapCount += 1;
-        if (adminTapTimer) clearTimeout(adminTapTimer);
-        adminTapTimer = setTimeout(() => {
-          adminTapCount = 0;
-        }, 1800);
-
-        if (adminTapCount >= 3) {
-          adminTapCount = 0;
-          const box = document.getElementById('secretOwnerStatsBox');
-          if (box) {
-            box.classList.toggle('hidden');
-            const isShown = !box.classList.contains('hidden');
-            if (isShown) {
-              const el = document.getElementById('secretAbacusCountText');
-              if (el && latestAbacusTotal !== null) {
-                el.textContent = `JSON 카운터 누적 호출 수: 총 ${latestAbacusTotal.toLocaleString()}회 접속됨`;
-              }
-              showToast('🔒 제작자 전용 실시간 방문자 통계 창을 열었습니다.');
-              box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
-          }
-        }
-      };
-
-      if (window.location.search.includes('stats=1') || window.location.hash.includes('stats')) {
-        const box = document.getElementById('secretOwnerStatsBox');
-        if (box) box.classList.remove('hidden');
-      }
 
       // 초기 1회 전체 렌더링
       updateStrategicBriefingBar();
