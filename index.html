@@ -1504,6 +1504,7 @@
                 <option value="1" data-icon="🌱" data-color="#56c25b">1충 · 가성비 (할인 18 / 기본 30 엘리프)</option>
                 <option value="2" data-icon="⭐" data-color="#2eb8ac">2충 · 황크 천장 가속 (할인 54 / 기본 90 엘리프)</option>
                 <option value="3" data-icon="⚡" data-color="#e5a93c">3충 · 중강도 (할인 114 / 기본 190 엘리프)</option>
+                <option value="4" data-icon="💫" data-color="#9b6ce6">4충 · 고강도 (할인 204 / 기본 340 엘리프)</option>
                 <option value="5" data-icon="🔥" data-color="#e86f88">5충 · 풀충전 (할인 330 / 기본 550 엘리프)</option>
               </select>
             </div>
@@ -3103,8 +3104,9 @@
     // =========================================================================
     const KING_CANDY_COSTS_DISCOUNT = { 0: 0, 3: 54, 5: 114, 7: 192, 8: 240, 9: 288, 11: 420, 13: 576, 15: 810 };
     const KING_CANDY_COSTS_NORMAL = { 0: 0, 3: 90, 5: 190, 7: 320, 8: 400, 9: 480, 11: 700, 13: 960, 15: 1350 };
-    const STAR_CANDY_COSTS_DISCOUNT = { 0: 0, 1: 18, 2: 54, 3: 114, 5: 330 };
-    const STAR_CANDY_COSTS_NORMAL = { 0: 0, 1: 30, 2: 90, 3: 190, 5: 550 };
+    // 별사탕 정가 회차별 30·60·100·150·210 (누적 30·90·190·340·550), 데일리 공물 할인은 정가의 60%
+    const STAR_CANDY_COSTS_DISCOUNT = { 0: 0, 1: 18, 2: 54, 3: 114, 4: 204, 5: 330 };
+    const STAR_CANDY_COSTS_NORMAL = { 0: 0, 1: 30, 2: 90, 3: 190, 4: 340, 5: 550 };
 
     // =========================================================================
     // 일회성 이벤트 엘리프 (보스전·테극 업적 등) 집계 & 목록 렌더링
