@@ -1479,12 +1479,13 @@
               >
                 <option value="0" data-icon="•" data-color="#7c5836">0충 · 충전 안 함 (0 엘리프)</option>
                 <option value="3" data-icon="🌱" data-color="#56c25b">3충 · 가성비 1구간 (할인 54 / 기본 90 엘리프 · +300개)</option>
+                <option value="4" data-icon="🌿" data-color="#56c25b">4충 · 월정액 가성비 (할인 84 / 기본 140 엘리프 · +400개)</option>
                 <option value="5" data-icon="👑" data-color="#2eb8ac" selected>5충 · 국민 가성비 구간 (할인 114 / 기본 190 엘리프 · +500개)</option>
-                <option value="7" data-icon="🍱" data-color="#3b82f6">7충 · 빙고/도시락 권장선 (할인 192 / 기본 320 엘리프 · +700개)</option>
+                <option value="7" data-icon="🍱" data-color="#3b82f6">7충 · 빙고/도시락 권장선 (할인 198 / 기본 330 엘리프 · +700개)</option>
                 <option value="8" data-icon="⚡" data-color="#e5a93c">8충 · 황크/장비 집중 (할인 240 / 기본 400 엘리프 · +800개)</option>
-                <option value="9" data-icon="🎯" data-color="#9b6ce6">9충 · 무공물 엘리프 페이백 분기선 (할인 288 / 기본 480 엘리프 · +900개)</option>
+                <option value="9" data-icon="🎯" data-color="#9b6ce6">9충 · 무공물 엘리프 페이백 분기선 (할인 300 / 기본 500 엘리프 · +900개)</option>
                 <option value="11" data-icon="🔥" data-color="#c98a4b">11충 · 고강도 파밍 (할인 420 / 기본 700 엘리프 · +1,100개)</option>
-                <option value="13" data-icon="🏅" data-color="#d97706">13충 · 무공물 전체 재화가치 분기선 (할인 576 / 기본 960 엘리프 · +1,300개)</option>
+                <option value="13" data-icon="🏅" data-color="#d97706">13충 · 무공물 전체 재화가치 분기선 (할인 600 / 기본 1,000 엘리프 · +1,300개)</option>
                 <option value="15" data-icon="💎" data-color="#e86f88">15충 · 풀충전 상한 (할인 810 / 기본 1,350 엘리프 · +1,500개)</option>
               </select>
             </div>
@@ -1501,13 +1502,22 @@
                 aria-label="별사탕 일일 충전 횟수"
               >
                 <option value="0" data-icon="•" data-color="#7c5836" selected>0충 · 기본 180개만 사용 (0 엘리프)</option>
-                <option value="1" data-icon="🌱" data-color="#56c25b">1충 · 가성비 (할인 18 / 기본 30 엘리프)</option>
-                <option value="2" data-icon="⭐" data-color="#2eb8ac">2충 · 황크 천장 가속 (할인 54 / 기본 90 엘리프)</option>
-                <option value="3" data-icon="⚡" data-color="#e5a93c">3충 · 중강도 (할인 114 / 기본 190 엘리프)</option>
-                <option value="4" data-icon="💫" data-color="#9b6ce6">4충 · 고강도 (할인 204 / 기본 340 엘리프)</option>
-                <option value="5" data-icon="🔥" data-color="#e86f88">5충 · 풀충전 (할인 330 / 기본 550 엘리프)</option>
+                <option value="1" data-icon="🌱" data-color="#56c25b">1충 · 가성비 (할인 18 / 기본 30 엘리프 · +60개)</option>
+                <option value="2" data-icon="⭐" data-color="#2eb8ac">2충 · 황크 천장 가속 (할인 54 / 기본 90 엘리프 · +120개)</option>
+                <option value="3" data-icon="⚡" data-color="#e5a93c">3충 · 중강도 (할인 114 / 기본 190 엘리프 · +180개)</option>
+                <option value="4" data-icon="💫" data-color="#9b6ce6">4충 · 고강도 (할인 204 / 기본 340 엘리프 · +240개)</option>
+                <option value="5" data-icon="🔥" data-color="#e86f88">5충 · 풀충전 (할인 330 / 기본 550 엘리프 · +300개)</option>
               </select>
+              <span id="elifStarMarginalHint" class="text-[11px] text-muted"></span>
             </div>
+
+            <label class="flex items-center justify-between gap-2 text-xs cursor-pointer">
+              <span class="flex items-center gap-2 min-w-0">
+                <input type="checkbox" id="chkExpShopChamjal" onchange="window.trickcalUpdateElifCalc && window.trickcalUpdateElifCalc()" class="ui-checkbox" />
+                <span class="font-semibold text-main">캐시상점 무료엘리프 200개 → 참잘 10개(별사탕 100개) + 재료상자 (따로 쌓아두기 가능)</span>
+              </span>
+              <strong class="font-pop text-red-dark shrink-0">-200 / 일</strong>
+            </label>
 
             <label class="flex items-center justify-between gap-2 text-xs cursor-pointer pt-1 border-t">
               <span class="flex items-center gap-2 min-w-0">
@@ -3102,9 +3112,11 @@
     // =========================================================================
     // [신규] 일일 무료 엘리프 수급·지출 손익 계산기 & 3.25주년 왕사탕 도시락 시뮬레이터
     // =========================================================================
-    const KING_CANDY_COSTS_DISCOUNT = { 0: 0, 3: 54, 5: 114, 7: 192, 8: 240, 9: 288, 11: 420, 13: 576, 15: 810 };
-    const KING_CANDY_COSTS_NORMAL = { 0: 0, 3: 90, 5: 190, 7: 320, 8: 400, 9: 480, 11: 700, 13: 960, 15: 1350 };
-    // 별사탕 정가 회차별 30·60·100·150·210 (누적 30·90·190·340·550), 데일리 공물 할인은 정가의 60%
+    // 왕사탕 정가 회차별 30·30·30·50·50·70·70·70·100·100·100·150·150·150·200, 데일리 공물(월정액) 할인은 정가의 60%
+    // (아카라이브 183041528 '기존 N충 → 월정액 M충' 비교 13건과 184144938 표의 4충 84·7충 198·11충 420·13충 600에 모두 일치)
+    const KING_CANDY_COSTS_DISCOUNT = { 0: 0, 3: 54, 4: 84, 5: 114, 7: 198, 8: 240, 9: 300, 11: 420, 13: 600, 15: 810 };
+    const KING_CANDY_COSTS_NORMAL = { 0: 0, 3: 90, 4: 140, 5: 190, 7: 330, 8: 400, 9: 500, 11: 700, 13: 1000, 15: 1350 };
+    // 별사탕 정가 회차별 30·60·100·150·210 (누적 30·90·190·340·550), 할인 18·36·60·90·126 (누적 18·54·114·204·330), 1회 충전 = 별사탕 60개
     const STAR_CANDY_COSTS_DISCOUNT = { 0: 0, 1: 18, 2: 54, 3: 114, 4: 204, 5: 330 };
     const STAR_CANDY_COSTS_NORMAL = { 0: 0, 1: 30, 2: 90, 3: 190, 4: 340, 5: 550 };
 
@@ -3243,10 +3255,26 @@
       const kingCount = Number(document.getElementById('selExpKingCandy')?.value || 5);
       const starCount = Number(document.getElementById('selExpStarCandy')?.value || 0);
       const buyShop200 = document.getElementById('chkExpShopFreeElifCandy')?.checked ? 200 : 0;
+      const buyChamjal200 = document.getElementById('chkExpShopChamjal')?.checked ? 200 : 0; // 참잘 10개 = 별사탕 100개
 
       const kingCost = (hasDiscount ? KING_CANDY_COSTS_DISCOUNT[kingCount] : KING_CANDY_COSTS_NORMAL[kingCount]) || 0;
       const starCost = (hasDiscount ? STAR_CANDY_COSTS_DISCOUNT[starCount] : STAR_CANDY_COSTS_NORMAL[starCount]) || 0;
-      const totalExpense = kingCost + starCost + buyShop200;
+      const totalExpense = kingCost + starCost + buyShop200 + buyChamjal200;
+
+      // 별사탕: 마지막 충전 1회(60개)의 개당 엘리프와 참잘(200무엘 = 100개 → 개당 2.0)을 비교
+      const starHintEl = document.getElementById('elifStarMarginalHint');
+      if (starHintEl) {
+        const table = hasDiscount ? STAR_CANDY_COSTS_DISCOUNT : STAR_CANDY_COSTS_NORMAL;
+        if (starCount > 0) {
+          const lastCost = (table[starCount] || 0) - (table[starCount - 1] || 0);
+          const perStar = lastCost / 60;
+          starHintEl.textContent =
+            `${starCount}번째 충전: ${lastCost}엘리프 → 별사탕 1개당 ${perStar.toFixed(1)}엘리프 ` +
+            (perStar > 2 ? '· 참잘(개당 2.0)이 더 저렴' : perStar < 2 ? '· 참잘(개당 2.0)보다 저렴' : '· 참잘(개당 2.0)과 같음');
+        } else {
+          starHintEl.textContent = '참고: 참잘 10개(200무엘) = 별사탕 100개 → 개당 2.0엘리프';
+        }
+      }
       const netDaily = totalIncome - totalExpense;
       const netMonthly = netDaily * 30;
 
@@ -3271,7 +3299,7 @@
       if (expValEl) expValEl.textContent = `-${totalExpense.toLocaleString()} 엘리프 / 일`;
       if (expSubEl) {
         const addedKing = kingCount * 100 + (buyShop200 > 0 ? 100 : 0);
-        const addedStar = starCount * 30;
+        const addedStar = starCount * 60 + (buyChamjal200 > 0 ? 100 : 0); // 별사탕 1회 충전 = 60개, 참잘 10개 = 100개
         expSubEl.textContent = `충전 획득: 왕사탕 +${addedKing.toLocaleString()}개 / 별사탕 +${addedStar}개`;
       }
 
