@@ -123,15 +123,75 @@ function toNotice(item, boardMeta) {
   const nick = String((item.user && item.user.nickname) || '').toLowerCase();
   if (!OFFICIAL_NICK_KEYWORDS.some((k) => nick.includes(k))) return null;
 
+  const date = toIsoDate(f.createdDate);
+  const bodyText = smartEditorToText(f.contents);
+  const period = extractPeriod(bodyText, date);
+  const apostle = /픽업|사도\s*모집/.test(title) ? extractPickupApostle(bodyText) : '';
+
   return {
     id,
     category: classifyCategory(title),
     title,
-    date: toIsoDate(f.createdDate),
+    date,
     url: POST_URL(id),
     board: boardMeta.name,
+    // 본문의 "이벤트 기간 - 11/19(목) 정기점검 이후 ~ 12/03(목) 10:59"에서 뽑은 실제 진행 기간 (없으면 생략)
+    ...(period ? { startAt: period.startAt, endAt: period.endAt } : {}),
+    ...(apostle ? { apostle } : {}),
     _contents: f.contents // 쿠폰 추출용 (출력 전에 제거)
   };
+}
+
+// ---------------------------------------------------------------------------
+// 본문 → 진행 기간 / 픽업 사도명
+// ---------------------------------------------------------------------------
+// 날짜 한 개: "11/19(목)" 또는 "11월 19일(목)" + 선택적으로 "정기점검 이후" 또는 "10:59"
+const DATE_PART = String.raw`(\d{1,2})\s*(?:/|월\s*)(\d{1,2})\s*일?\s*(?:\([^)]*\))?\s*((?:정기\s*)?점검\s*(?:이후|후)|\d{1,2}:\d{2})?`;
+const RANGE_RE = new RegExp(`${DATE_PART}\\s*~\\s*${DATE_PART}`);
+
+function toKstIso(year, month, day, hh, mm) {
+  return `${year}-${pad2(month)}-${pad2(day)}T${pad2(hh)}:${pad2(mm)}:00+09:00`;
+}
+
+function extractPeriod(text, postedIso) {
+  if (!text) return null;
+  // '이벤트 기간' / '진행 기간' / '픽업 기간' 제목 뒤를 먼저 찾고, 없으면 본문 전체에서 첫 기간 표기
+  const headingIdx = text.search(/(이벤트|진행|모집|픽업|판매|오픈)\s*기간/);
+  const scopes = headingIdx >= 0 ? [text.slice(headingIdx, headingIdx + 400), text] : [text];
+  let m = null;
+  for (const s of scopes) {
+    m = s.match(RANGE_RE);
+    if (m) break;
+  }
+  if (!m) return null;
+
+  const [, sMon, sDay, sSuffix, eMon, eDay, eSuffix] = m;
+  const postedYear = Number(String(postedIso).slice(0, 4)) || new Date().getUTCFullYear();
+  const postedMonth = Number(String(postedIso).slice(5, 7)) || Number(sMon);
+  const yearFor = (mon) => (Number(mon) < postedMonth - 6 ? postedYear + 1 : postedYear);
+
+  // 시작: "점검 이후"는 통상 점검 종료 시각(11:00)으로, 시각이 있으면 그 시각, 없으면 00:00
+  let [sh, sm] = [0, 0];
+  if (sSuffix && /점검/.test(sSuffix)) [sh, sm] = [11, 0];
+  else if (sSuffix) [sh, sm] = sSuffix.split(':').map(Number);
+  // 종료: 시각이 있으면 그 시각, 없으면 그날 23:59
+  let [eh, em] = [23, 59];
+  if (eSuffix && /^\d/.test(eSuffix)) [eh, em] = eSuffix.split(':').map(Number);
+
+  const startYear = yearFor(sMon);
+  let endYear = yearFor(eMon);
+  if (Number(eMon) < Number(sMon) && endYear === startYear) endYear += 1; // 12/24 ~ 1/7 같은 연말 걸침
+  const startAt = toKstIso(startYear, Number(sMon), Number(sDay), sh, sm);
+  const endAt = toKstIso(endYear, Number(eMon), Number(eDay), eh, em);
+  if (!(Date.parse(endAt) > Date.parse(startAt))) return null;
+  return { startAt, endAt };
+}
+
+function extractPickupApostle(text) {
+  // 최소 일치(?)로 "아이리스의"에서 조사 '의'를 떼어 "아이리스"만 추출
+  const m = text.match(/신규\s*사도\s*[「『"']?([가-힣A-Za-z]{1,10}?)[」』"']?\s*(?:의|이|가|를|픽업)(?=[\s,.!]|$)/);
+  const name = m ? m[1] : '';
+  return ['픽업', '모집', '사도', '이벤트'].includes(name) ? '' : name;
 }
 
 // ---------------------------------------------------------------------------

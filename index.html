@@ -2848,6 +2848,22 @@
       };
     }
 
+    // 수집기가 공지 본문에서 뽑은 진행 기간(startAt/endAt, ISO)과 픽업 사도명 검증
+    function sanitizeNoticeExtras(n) {
+      const extras = {};
+      if (!n || typeof n !== 'object') return extras;
+      const isoRe = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?(\.\d+)?(Z|[+-]\d{2}:\d{2})$/;
+      const s = String(n.startAt || '');
+      const e = String(n.endAt || '');
+      if (isoRe.test(s) && isoRe.test(e) && Date.parse(e) > Date.parse(s)) {
+        extras.startAt = s;
+        extras.endAt = e;
+      }
+      const ap = String(n.apostle || '').trim();
+      if (/^[가-힣A-Za-z]{1,10}$/.test(ap)) extras.apostle = ap;
+      return extras;
+    }
+
     // 일회성 이벤트 엘리프 항목 정규화 (저장값·원격 JSON 모두 이 함수를 거침)
     const MAX_CUSTOM_EVENTS = 30;
     const EVENT_DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
@@ -2893,7 +2909,8 @@
                 category: String(n.category || '공지').slice(0, 24),
                 title: String(n.title || '').slice(0, 160),
                 date: String(n.date || '').slice(0, 20),
-                url: sanitizeSafeExternalUrl(n.url)
+                url: sanitizeSafeExternalUrl(n.url),
+                ...sanitizeNoticeExtras(n)
               }))
           : [];
 
@@ -3150,7 +3167,9 @@
         // 2) 최신 픽업 사도 공지에서 「...」 또는 '...' 또는 - 사도명 자동 추출
         if ((t.includes('픽업') || t.includes('사도 모집') || t.includes('신규 사도')) && !t.includes('복각')) {
           // 첫 번째 「...」를 무조건 사도명으로 쓰면 보스명(「니펠/죽음」) 등이 잡히므로, 사도·픽업 문맥에 붙은 이름만 인정
+          // 수집기가 공지 본문("신규 사도 아이리스의 픽업 기간이…")에서 뽑은 사도명이 있으면 그것을 최우선 사용
           const m =
+            (n.apostle ? [n.apostle, n.apostle] : null) ||
             t.match(/사도\s*[「『'“"]([^」』'”"]{1,12})[」』'”"]/) ||
             t.match(/[「『'“"]([^」』'”"]{1,12})[」』'”"]\s*(?:픽업|모집)/) ||
             t.match(/사도\s+([가-힣A-Za-z0-9()]{2,12})\s+픽업/);
@@ -4207,11 +4226,13 @@
     function getNoticeReferenceMs(n, nowMs) {
       if (!n) return null;
       const t = String(n.title || '');
-      const titleDate = t.match(/(\d{1,2})\s*월\s*(\d{1,2})\s*일/);
+      // "(~12월 3일)"처럼 '~' 뒤에 오는 날짜는 종료일이므로 기준일로 쓰지 않음
+      // (예전에는 이 종료일을 기준일로 읽어 시작일이 12/3로 잡히고 'D-12 오픈 예정'으로 표시됐음)
+      const titleDate = [...t.matchAll(/(~\s*)?(\d{1,2})\s*월\s*(\d{1,2})\s*일/g)].find((mm) => !mm[1]);
       const postedMatch = String(n.date || '').match(/^(\d{4})[-.](\d{2})[-.](\d{2})/);
       if (titleDate) {
-        const m = Number(titleDate[1]) - 1;
-        const d = Number(titleDate[2]);
+        const m = Number(titleDate[2]) - 1;
+        const d = Number(titleDate[3]);
         // 연도는 게시일 기준, 없으면 현재 연도 (연말·연초 경계 보정)
         let y = postedMatch ? Number(postedMatch[1]) : getKstDateParts(nowMs).year;
         if (postedMatch && m < Number(postedMatch[2]) - 1 - 6) y += 1;
@@ -4229,18 +4250,57 @@
     }
 
     // 공지 내용이 지금도 유효한지: 제목의 "~11/19" 종료일이 있으면 그것으로, 없으면 공지가 속한 2주 주기가 끝났는지로 판단
-    function isNoticeStillActive(n, nowMs) {
-      const t = String((n && n.title) || '');
+    // 공지의 실제 진행 기간
+    //  1순위: 수집기가 본문 "이벤트 기간 - 11/19(목) 정기점검 이후 ~ 12/03(목) 10:59"에서 뽑은 startAt/endAt
+    //  2순위: 제목의 "(~12월 3일)" 종료일 + 게시일 이후 첫 목요일 11:00(정기점검 종료)을 시작으로 추정
+    //  3순위: 공지가 속한 2주 교체 주기
+    function getNoticePeriod(n, nowMs) {
+      if (!n) return null;
+      const bodyStart = Date.parse(String(n.startAt || ''));
+      const bodyEnd = Date.parse(String(n.endAt || ''));
+      if (Number.isFinite(bodyStart) && Number.isFinite(bodyEnd) && bodyEnd > bodyStart) {
+        return { startMs: bodyStart, endMs: bodyEnd, source: 'body' };
+      }
+      const t = String(n.title || '');
+      const postedMatch = String(n.date || '').match(/^(\d{4})[-.](\d{2})[-.](\d{2})/);
       const tilde = t.match(/~\s*(\d{1,2})\s*(?:월|\/|\.)\s*(\d{1,2})/);
       if (tilde) {
-        const kst = getKstDateParts(nowMs);
         const m = Number(tilde[1]) - 1;
-        let y = kst.year;
-        if (m < kst.month - 6) y += 1;
-        return Date.UTC(y, m, Number(tilde[2]), 10, 59, 0) - 9 * 3600 * 1000 > nowMs;
+        const baseYear = postedMatch ? Number(postedMatch[1]) : getKstDateParts(nowMs).year;
+        const baseMonth = postedMatch ? Number(postedMatch[2]) - 1 : getKstDateParts(nowMs).month;
+        const y = m < baseMonth - 6 ? baseYear + 1 : baseYear;
+        const endMs = Date.UTC(y, m, Number(tilde[2]), 10, 59, 0) - 9 * 3600 * 1000;
+        let startMs = endMs - 14 * 86400 * 1000;
+        if (postedMatch) {
+          const postedMs =
+            Date.UTC(Number(postedMatch[1]), Number(postedMatch[2]) - 1, Number(postedMatch[3]), 0, 0, 0) - 9 * 3600 * 1000;
+          const firstThu = nextKstWeekdayAt(postedMs - 1, 4, 11);
+          startMs = firstThu < endMs ? firstThu : postedMs;
+        }
+        return { startMs, endMs, source: 'title' };
       }
       const cycle = getNoticeCycleBounds(n, nowMs);
-      return Boolean(cycle) && cycle.endMs > nowMs;
+      return cycle ? { startMs: cycle.startMs, endMs: cycle.endMs, source: 'cycle' } : null;
+    }
+
+    function isNoticeStillActive(n, nowMs) {
+      const p = getNoticePeriod(n, nowMs);
+      return Boolean(p) && p.endMs > nowMs;
+    }
+
+    // "신규 픽업 사도 모집 진행 예정 안내(~12월 3일)" → "신규 픽업 사도 「아이리스」 모집"
+    function cleanScheduleTitle(n) {
+      let t = String(n.title || '').replace(/^\[[^\]]+\]\s*/, '');
+      t = t.replace(/\(\s*~[^)]*\)/g, '').replace(/\((?:수정|추가|완료)\)/g, '');
+      t = t.replace(/\s*(?:진행\s*|오픈\s*)?예정\s*안내\s*$/, '').replace(/\s*안내\s*$/, '').trim();
+      if (n.apostle && !t.includes(n.apostle)) t = t.replace(/(사도)\s*(모집)/, `$1 「${n.apostle}」 $2`);
+      return t || String(n.title || '');
+    }
+
+    function formatKstShort(ms) {
+      const k = getKstDateParts(ms);
+      const dn = ['일', '월', '화', '수', '목', '금', '토'][k.day];
+      return `${k.month + 1}/${k.date}(${dn}) ${formatTwo(k.hours)}:${formatTwo(k.minutes)}`;
     }
 
     function extractLiveEventsFromNotices(nowMs) {
@@ -4265,29 +4325,23 @@
         // 이미 기본 카탈로그(SCHEDULE_CATALOG)에 등록된 동일 사도(버터, 코페) 공지는 중복 생성 방지
         if (t.includes('버터') || t.includes('코페') || t.includes('두두') || t.includes('공룡 대침공')) continue;
 
-        // [만료 버그 수정] 종료일이 제목에 없으면 '현재' 주기 끝이 아니라 '공지가 속한' 2주 주기의 끝을 종료일로 사용
-        // (기존에는 지난 공지도 매 주기마다 현재 주기 종료일을 새로 받아 영원히 진행 중으로 표시됐음)
-        const noticeCycle = getNoticeCycleBounds(n, nowMs);
-        if (!noticeCycle) continue; // 날짜를 알 수 없는 공지는 일정으로 만들지 않음
-        let parsedEndMs = noticeCycle.endMs;
-        const tildeDateMatch = t.match(/~\s*(\d{1,2})\s*(?:월|\/|\.)\s*(\d{1,2})/);
-        if (tildeDateMatch) {
-          const m = Number(tildeDateMatch[1]) - 1;
-          const d = Number(tildeDateMatch[2]);
-          let y = kst.year;
-          if (m < kst.month - 6) y += 1;
-          parsedEndMs = Date.UTC(y, m, d, 10, 59, 0) - 9 * 3600 * 1000;
-        }
-        if (parsedEndMs > nowMs) {
+        // 진행 기간: 공지 본문 기간 → 제목 종료일+게시 후 첫 목요일 → 공지가 속한 2주 주기 순으로 판단
+        const period = getNoticePeriod(n, nowMs);
+        if (!period) continue; // 날짜를 알 수 없는 공지는 일정으로 만들지 않음
+        if (period.endMs > nowMs) {
+          const periodLabel = `${formatKstShort(period.startMs)} ~ ${formatKstShort(period.endMs)}`;
           extracted.push({
             id: `live_lounge_ev_${n.id}`,
             category: t.includes('픽업') || t.includes('테마극장') || t.includes('모집') ? 'pickup' : 'season',
             importance: 'critical',
-            typeLabel: '라운지 실시간 연동',
-            title: t.replace(/^\[[^\]]+\]\s*/, ''),
-            subtitle: `공식 라운지 신규 공지 자동 인식 (${n.date || '최신'})`,
-            startAt: new Date(noticeCycle.startMs).toISOString(),
-            endAt: new Date(parsedEndMs).toISOString(),
+            typeLabel: '라운지 공지 연동',
+            title: cleanScheduleTitle(n),
+            subtitle:
+              period.source === 'body'
+                ? `${periodLabel} · 공지 본문 기간 (게시 ${n.date || '-'})`
+                : `${periodLabel} · 제목 기준 추정 (게시 ${n.date || '-'})`,
+            startAt: new Date(period.startMs).toISOString(),
+            endAt: new Date(period.endMs).toISOString(),
             url: n.url
           });
         }
@@ -4766,7 +4820,8 @@
                 date: String((n && n.date) || '').slice(0, 20),
                 url: SAFE_NUMERIC_ID_RE.test(id)
                   ? `https://game.naver.com/lounge/Trickcal/board/detail/${id}`
-                  : sanitizeSafeExternalUrl(n && n.url)
+                  : sanitizeSafeExternalUrl(n && n.url),
+                ...sanitizeNoticeExtras(n)
               };
             })
             .filter((n) => n.id && isValidOfficialTitleOnly(n.title));
