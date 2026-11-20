@@ -2105,7 +2105,6 @@
       'arca.live',
       'note.trickcal.com',
       'lsbim.github.io',
-      'hits.sh',
       'namu.wiki',
       'namuwitch.miraheze.org',
       'www.pickupcal.com',
@@ -5797,6 +5796,15 @@
         showToast('숨겼던 쿠폰을 다시 표시했습니다.');
       };
 
+      // 방문 집계: 화면 요소 없이 배포 주소(github.io)에서만 요청 → 로컬 테스트는 집계에서 제외
+      if (window.location.hostname.endsWith('github.io')) {
+        try {
+          const beacon = new Image();
+          beacon.referrerPolicy = 'no-referrer';
+          beacon.src = 'https://hits.sh/kimeast123-gif.github.io/trickcal_guide.svg?view=today-total';
+        } catch (e) {}
+      }
+
       // 초기 1회 전체 렌더링
       updateStrategicBriefingBar();
       renderExpirationChecklist();
@@ -5850,14 +5858,5 @@
     }
     window.addEventListener('load', initWidgetApp);
   </script>
-  <!-- [제작자 전용 비노출 방문자 카운터 (화면 UI 노출 0% / 통계 확인: https://hits.sh/kimeast123-gif.github.io/trickcal_guide/)] -->
-  <img
-    src="https://hits.sh/kimeast123-gif.github.io/trickcal_guide.svg?view=today-total"
-    alt=""
-    width="1"
-    height="1"
-    aria-hidden="true"
-    style="position:fixed;left:-9999px;bottom:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden;"
-  />
 </body>
 </html>
