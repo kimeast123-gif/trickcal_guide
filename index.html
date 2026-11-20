@@ -1478,14 +1478,14 @@
                 aria-label="왕사탕 일일 충전 횟수"
               >
                 <option value="0" data-icon="•" data-color="#7c5836">0충 · 충전 안 함 (0 엘리프)</option>
-                <option value="3" data-icon="🌱" data-color="#56c25b">3충 · 가성비 1구간 (할인 54 / 기본 90 엘리프 · +300개)</option>
-                <option value="4" data-icon="🌿" data-color="#56c25b">4충 · 월정액 가성비 (할인 84 / 기본 140 엘리프 · +400개)</option>
-                <option value="5" data-icon="👑" data-color="#2eb8ac" selected>5충 · 국민 가성비 구간 (할인 114 / 기본 190 엘리프 · +500개)</option>
-                <option value="7" data-icon="🍱" data-color="#3b82f6">7충 · 빙고/도시락 권장선 (할인 198 / 기본 330 엘리프 · +700개)</option>
-                <option value="8" data-icon="⚡" data-color="#e5a93c">8충 · 황크/장비 집중 (할인 240 / 기본 400 엘리프 · +800개)</option>
-                <option value="9" data-icon="🎯" data-color="#9b6ce6">9충 · 무공물 엘리프 페이백 분기선 (할인 300 / 기본 500 엘리프 · +900개)</option>
-                <option value="11" data-icon="🔥" data-color="#c98a4b">11충 · 고강도 파밍 (할인 420 / 기본 700 엘리프 · +1,100개)</option>
-                <option value="13" data-icon="🏅" data-color="#d97706">13충 · 무공물 전체 재화가치 분기선 (할인 600 / 기본 1,000 엘리프 · +1,300개)</option>
+                <option value="3" data-icon="🌱" data-color="#56c25b">3충 · 월정액 없을 때 평소 (할인 54 / 기본 90 엘리프 · +300개)</option>
+                <option value="4" data-icon="🌿" data-color="#56c25b">4충 · 월정액 평소 추천 · 기존 3충 비용 (할인 84 / 기본 140 엘리프 · +400개)</option>
+                <option value="5" data-icon="👑" data-color="#2eb8ac" selected>5충 · 월정액 없을 때 평소 상한 (할인 114 / 기본 190 엘리프 · +500개)</option>
+                <option value="7" data-icon="🍱" data-color="#3b82f6">7충 · 월정액 평소 추천 · 기존 5충 비용 (할인 198 / 기본 330 엘리프 · +700개)</option>
+                <option value="8" data-icon="⚡" data-color="#e5a93c">8충 · 월정액 없을 때 빙고 시즌 (할인 240 / 기본 400 엘리프 · +800개)</option>
+                <option value="9" data-icon="🎯" data-color="#9b6ce6">9충 · 고강도 (할인 300 / 기본 500 엘리프 · +900개)</option>
+                <option value="11" data-icon="🔥" data-color="#c98a4b">11충 · 월정액 빙고 시즌 추천 · 기존 8충 비용 (할인 420 / 기본 700 엘리프 · +1,100개)</option>
+                <option value="13" data-icon="🏅" data-color="#d97706">13충 · 기존 10충과 같은 비용 (할인 600 / 기본 1,000 엘리프 · +1,300개)</option>
                 <option value="15" data-icon="💎" data-color="#e86f88">15충 · 풀충전 상한 (할인 810 / 기본 1,350 엘리프 · +1,500개)</option>
               </select>
             </div>
@@ -1504,9 +1504,9 @@
                 <option value="0" data-icon="•" data-color="#7c5836" selected>0충 · 기본 180개만 사용 (0 엘리프)</option>
                 <option value="1" data-icon="🌱" data-color="#56c25b">1충 · 가성비 (할인 18 / 기본 30 엘리프 · +60개)</option>
                 <option value="2" data-icon="⭐" data-color="#2eb8ac">2충 · 황크 천장 가속 (할인 54 / 기본 90 엘리프 · +120개)</option>
-                <option value="3" data-icon="⚡" data-color="#e5a93c">3충 · 중강도 (할인 114 / 기본 190 엘리프 · +180개)</option>
-                <option value="4" data-icon="💫" data-color="#9b6ce6">4충 · 고강도 (할인 204 / 기본 340 엘리프 · +240개)</option>
-                <option value="5" data-icon="🔥" data-color="#e86f88">5충 · 풀충전 (할인 330 / 기본 550 엘리프 · +300개)</option>
+                <option value="3" data-icon="⚡" data-color="#e5a93c">3충 · 월정액 없을 때 추천 · 엘리프 저축 (할인 114 / 기본 190 엘리프 · +180개)</option>
+                <option value="4" data-icon="💫" data-color="#9b6ce6">4충 · 월정액 추천 · 기존 3충 비용+14 (할인 204 / 기본 340 엘리프 · +240개)</option>
+                <option value="5" data-icon="🔥" data-color="#e86f88">5충 · 풀충전 · 참잘보다 비쌈 (할인 330 / 기본 550 엘리프 · +300개)</option>
               </select>
               <span id="elifStarMarginalHint" class="text-[11px] text-muted"></span>
             </div>
@@ -1764,7 +1764,7 @@
                 <ul class="list-disc pl-4 mt-0.5 space-y-0.5 text-muted font-semibold">
                   <li><strong>블록 배치 공식:</strong> <code>십자·X·3×3 → 노란 네모</code>, <code>길쭉이 → 녹색 십자</code> 배치 시 평균 <strong>10~11회(2,000~2,200 재화 = 왕사탕 2,500~2,750개, 100개 페이백 감안 순소모 ~2,525개)</strong>로 1판 완주!</li>
                   <li><strong>올클리어 원칙:</strong> 모카롱만 남았어도 <strong>줄 완성 무료엘리프(판당 180개)</strong> 비중이 커서 끝까지 다 여는 게 이득이며, 최소 <strong>교단 증명서(20개)</strong>는 무조건 먹고 넘어가야 합니다.</li>
-                  <li><strong>적정 충전선:</strong> 무공물 기준 엘리프 페이백만 봐도 <strong>9충</strong>, 전체 재화 가치(판당 730무엘) 반영 시 <strong>13충</strong>까지 손해가 없습니다. 현실적으로는 <strong>평소보다 +2~3충(3충 유저 → 5충, 5충 유저 → 7~8충)</strong>이 최적이며, <strong>왕사탕 공물(40% 할인) 유저는 15충까지 전 구간 이득</strong>입니다.</li>
+                  <li><strong>적정 충전선:</strong> 커뮤니티 추천(아카라이브 184144938)은 <strong>월정액 유저 빙고 시즌 11충</strong>(420엘리프, 기존 8충 비용), <strong>월정액 없을 때 8충</strong>입니다. 아래는 빙고 보상 가치로 본 별도 분석입니다 — 무공물 기준 엘리프 페이백만 봐도 <strong>9충</strong>, 전체 재화 가치(판당 730무엘) 반영 시 <strong>13충</strong>까지 손해가 없습니다. 현실적으로는 <strong>평소보다 +2~3충(3충 유저 → 5충, 5충 유저 → 7~8충)</strong>이 최적이며, <strong>왕사탕 공물(40% 할인) 유저는 15충까지 전 구간 이득</strong>입니다.</li>
                 </ul>
               </div>
               <div>
