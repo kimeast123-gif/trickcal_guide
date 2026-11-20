@@ -1,0 +1,26 @@
+{
+  "_설명": "사람이 직접 관리하는 데이터. 수집 스크립트가 라운지 공지와 합쳐 live_data.json을 만듭니다. 이 파일을 고쳐 커밋하면 다음 수집 때 사이트에 반영됩니다. 마감일(until/endDate/expiresAt)이 지난 항목은 자동으로 빠집니다.",
+  "_예시": {
+    "notices": [
+      {
+        "id": "cafe_20261120_notice",
+        "title": "[공지] 카페 공지 제목을 그대로 적기",
+        "url": "https://cafe.naver.com/trickcal/글번호",
+        "date": "2026-11-20",
+        "until": "2026-12-03",
+        "source": "공식 카페",
+        "category": "공지"
+      }
+    ],
+    "events": [
+      { "id": "boss_dec", "name": "보스전 누적 보상", "elif": 600, "endDate": "2026-12-05", "sourceUrl": "https://..." }
+    ],
+    "coupons": [
+      { "code": "COUPONCODE", "reward": "엘리프 100개", "desc": "쿠폰 설명", "expiresAt": "2026-12-03T10:59:00+09:00", "periodLabel": "~12/03 10:59", "sourceUrl": "https://..." }
+    ]
+  },
+  "notices": [],
+  "events": [],
+  "schedules": [],
+  "coupons": []
+}
