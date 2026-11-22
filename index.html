@@ -118,6 +118,10 @@
       user-select: none;
       z-index: 40;
     }
+    /* 열린 드롭다운은 뒤에 오는 드롭다운(같은 z-index 40)보다 위에 그려야 메뉴가 가려지지 않음 */
+    .trickcal-dropdown.open {
+      z-index: 95;
+    }
     .trickcal-dropdown.w-full {
       display: block;
       width: 100%;
