@@ -1,8 +1,18 @@
 {
-  "generatedAt": "2026-11-20T12:32:57.906Z",
+  "generatedAt": "2026-11-23T08:35:28.070Z",
   "version": 1,
   "source": "naver-game-lounge",
   "notices": [
+    {
+      "id": "8500240",
+      "category": "공지",
+      "title": "[안내] 공식 작가 휴재 안내 및 공식 작가 리프레시 제도 신설의 건",
+      "date": "2026-11-23",
+      "url": "https://game.naver.com/lounge/Trickcal/board/detail/8500240",
+      "board": "공지사항",
+      "startAt": "2026-11-23T00:00:00+09:00",
+      "endAt": "2026-12-14T23:59:00+09:00"
+    },
     {
       "id": "8488218",
       "category": "점검·업데이트",
@@ -173,16 +183,6 @@
       "date": "2026-11-06",
       "url": "https://game.naver.com/lounge/Trickcal/board/detail/8419666",
       "board": "공지사항"
-    },
-    {
-      "id": "8409501",
-      "category": "점검·업데이트",
-      "title": "[업데이트] 주말 콘텐츠 「WWElias」 정규 시즌 오픈 안내",
-      "date": "2026-11-04",
-      "url": "https://game.naver.com/lounge/Trickcal/board/detail/8409501",
-      "board": "업데이트",
-      "startAt": "2026-11-06T12:00:00+09:00",
-      "endAt": "2026-11-08T16:00:00+09:00"
     }
   ],
   "coupons": [
