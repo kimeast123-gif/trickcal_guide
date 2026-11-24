@@ -1,8 +1,28 @@
 {
-  "generatedAt": "2026-11-23T08:35:28.070Z",
+  "generatedAt": "2026-11-24T08:43:39.581Z",
   "version": 1,
   "source": "naver-game-lounge",
   "notices": [
+    {
+      "id": "8503281",
+      "category": "이벤트",
+      "title": "[이벤트] 12월 출석 이벤트 진행 예정 안내(~1월 1일)",
+      "date": "2026-11-24",
+      "url": "https://game.naver.com/lounge/Trickcal/board/detail/8503281",
+      "board": "진행 이벤트",
+      "startAt": "2026-12-01T04:00:00+09:00",
+      "endAt": "2027-01-01T03:59:00+09:00"
+    },
+    {
+      "id": "8503277",
+      "category": "이벤트",
+      "title": "[이벤트] 신규 픽업 엘다인 사도 모집 진행 예정 안내(~12월 3일)",
+      "date": "2026-11-24",
+      "url": "https://game.naver.com/lounge/Trickcal/board/detail/8503277",
+      "board": "진행 이벤트",
+      "startAt": "2026-11-26T11:00:00+09:00",
+      "endAt": "2026-12-03T10:59:00+09:00"
+    },
     {
       "id": "8500240",
       "category": "공지",
@@ -165,24 +185,6 @@
       "board": "쿠폰",
       "startAt": "2026-11-11T12:00:00+09:00",
       "endAt": "2026-11-26T10:59:00+09:00"
-    },
-    {
-      "id": "8440286",
-      "category": "이벤트",
-      "title": "[이벤트] [테마 사복] 7종 할인&스페셜 픽업 선택 모집 진행 예정 안내(~11월 19일)",
-      "date": "2026-11-10",
-      "url": "https://game.naver.com/lounge/Trickcal/board/detail/8440286",
-      "board": "진행 이벤트",
-      "startAt": "2026-11-12T11:00:00+09:00",
-      "endAt": "2026-11-19T10:59:00+09:00"
-    },
-    {
-      "id": "8419666",
-      "category": "공지",
-      "title": "[안내] 11월 06일(금) 확인된 문제 현상 안내(수정)",
-      "date": "2026-11-06",
-      "url": "https://game.naver.com/lounge/Trickcal/board/detail/8419666",
-      "board": "공지사항"
     }
   ],
   "coupons": [
