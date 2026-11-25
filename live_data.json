@@ -1,8 +1,44 @@
 {
-  "generatedAt": "2026-11-24T08:43:39.581Z",
+  "generatedAt": "2026-11-25T09:04:33.928Z",
   "version": 1,
   "source": "naver-game-lounge",
   "notices": [
+    {
+      "id": "8507323",
+      "category": "점검·업데이트",
+      "title": "[업데이트] 신규 상품 [리뉴아] 꼬까꼬까옷 패스 판매 상세 안내",
+      "date": "2026-11-25",
+      "url": "https://game.naver.com/lounge/Trickcal/board/detail/8507323",
+      "board": "업데이트",
+      "startAt": "2026-11-26T11:00:00+09:00",
+      "endAt": "2026-12-10T10:59:00+09:00"
+    },
+    {
+      "id": "8507320",
+      "category": "점검·업데이트",
+      "title": "[업데이트] 11월 26일(목) 업데이트 예정 내역 안내",
+      "date": "2026-11-25",
+      "url": "https://game.naver.com/lounge/Trickcal/board/detail/8507320",
+      "board": "업데이트",
+      "startAt": "2026-11-26T11:00:00+09:00",
+      "endAt": "2026-12-03T10:59:00+09:00"
+    },
+    {
+      "id": "8507313",
+      "category": "공지",
+      "title": "[안내] 트릭컬 리바이브 PC 클라이언트 출시 안내",
+      "date": "2026-11-25",
+      "url": "https://game.naver.com/lounge/Trickcal/board/detail/8507313",
+      "board": "공지사항"
+    },
+    {
+      "id": "8507297",
+      "category": "점검·업데이트",
+      "title": "[점검] 11월 26일(목) 정기점검 예정 안내",
+      "date": "2026-11-25",
+      "url": "https://game.naver.com/lounge/Trickcal/board/detail/8507297",
+      "board": "공지사항"
+    },
     {
       "id": "8503281",
       "category": "이벤트",
@@ -149,42 +185,6 @@
       "date": "2026-11-13",
       "url": "https://game.naver.com/lounge/Trickcal/board/detail/8456365",
       "board": "공지사항"
-    },
-    {
-      "id": "8452369",
-      "category": "공지",
-      "title": "[안내] 11월 12일(목) 확인된 문제 현상 안내(수정)(추가)",
-      "date": "2026-11-12",
-      "url": "https://game.naver.com/lounge/Trickcal/board/detail/8452369",
-      "board": "공지사항"
-    },
-    {
-      "id": "8444408",
-      "category": "점검·업데이트",
-      "title": "[업데이트] 11월 12일(목) 업데이트 예정 내역 안내(수정)",
-      "date": "2026-11-11",
-      "url": "https://game.naver.com/lounge/Trickcal/board/detail/8444408",
-      "board": "업데이트",
-      "startAt": "2026-11-12T11:00:00+09:00",
-      "endAt": "2026-11-19T10:59:00+09:00"
-    },
-    {
-      "id": "8444404",
-      "category": "점검·업데이트",
-      "title": "[점검] 11월 12일(목) 정기점검 예정 안내(완료)",
-      "date": "2026-11-11",
-      "url": "https://game.naver.com/lounge/Trickcal/board/detail/8444404",
-      "board": "공지사항"
-    },
-    {
-      "id": "8443261",
-      "category": "쿠폰",
-      "title": "[쿠폰] 빼빼로데이 기념 쿠폰 안내(~11월 26일)(수정)",
-      "date": "2026-11-11",
-      "url": "https://game.naver.com/lounge/Trickcal/board/detail/8443261",
-      "board": "쿠폰",
-      "startAt": "2026-11-11T12:00:00+09:00",
-      "endAt": "2026-11-26T10:59:00+09:00"
     }
   ],
   "coupons": [
