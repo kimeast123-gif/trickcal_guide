@@ -1,8 +1,16 @@
 {
-  "generatedAt": "2026-11-26T08:46:51.054Z",
+  "generatedAt": "2026-11-26T10:09:53.676Z",
   "version": 1,
   "source": "naver-game-lounge",
   "notices": [
+    {
+      "id": "8512297",
+      "category": "쿠폰",
+      "title": "[쿠폰] PC 클라이언트 출시 기념 쿠폰 안내(~12월 10일)",
+      "date": "2026-11-26",
+      "url": "https://game.naver.com/lounge/Trickcal/board/detail/8512297",
+      "board": "쿠폰"
+    },
     {
       "id": "8511169",
       "category": "점검·업데이트",
@@ -175,19 +183,18 @@
       "startAt": "2026-11-19T11:00:00+09:00",
       "endAt": "2026-12-03T10:59:00+09:00",
       "apostle": "아이리스"
-    },
-    {
-      "id": "8475194",
-      "category": "이벤트",
-      "title": "[테마극장] <엘프를 위하여! 마법의 신비를 그대에게!> 오픈 예정 안내(~12월 3일)",
-      "date": "2026-11-17",
-      "url": "https://game.naver.com/lounge/Trickcal/board/detail/8475194",
-      "board": "진행 이벤트",
-      "startAt": "2026-11-19T11:00:00+09:00",
-      "endAt": "2026-12-03T10:59:00+09:00"
     }
   ],
-  "coupons": [],
+  "coupons": [
+    {
+      "code": "트릭컬PC버전출시",
+      "reward": "사도 모집 티켓 10개 + 1,000,000 골드",
+      "desc": "[쿠폰] PC 클라이언트 출시 기념 쿠폰 안내(~12월 10일)",
+      "expiresAt": "2026-12-10T10:59:00+09:00",
+      "periodLabel": "~12/10 10:59",
+      "sourceUrl": "https://game.naver.com/lounge/Trickcal/board/detail/8512297"
+    }
+  ],
   "events": [],
   "schedules": []
 }
