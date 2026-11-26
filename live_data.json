@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-11-25T09:04:33.928Z",
+  "generatedAt": "2026-11-26T02:54:02.420Z",
   "version": 1,
   "source": "naver-game-lounge",
   "notices": [
     {
       "id": "8507323",
       "category": "점검·업데이트",
-      "title": "[업데이트] 신규 상품 [리뉴아] 꼬까꼬까옷 패스 판매 상세 안내",
+      "title": "[업데이트] 신규 상품 [리뉴아] 꼬까꼬까옷 패스 판매 상세 안내(수정)",
       "date": "2026-11-25",
       "url": "https://game.naver.com/lounge/Trickcal/board/detail/8507323",
       "board": "업데이트",
@@ -187,16 +187,7 @@
       "board": "공지사항"
     }
   ],
-  "coupons": [
-    {
-      "code": "11DUDUGIFT11",
-      "reward": "엘리프 1,111개 + 딥다크 초콜릿 아이스크림 10개",
-      "desc": "[쿠폰] 빼빼로데이 기념 쿠폰 안내(~11월 26일)(수정)",
-      "expiresAt": "2026-11-26T10:59:00+09:00",
-      "periodLabel": "~11/26 10:59",
-      "sourceUrl": "https://game.naver.com/lounge/Trickcal/board/detail/8443261"
-    }
-  ],
+  "coupons": [],
   "events": [],
   "schedules": []
 }
