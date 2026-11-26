@@ -1,8 +1,16 @@
 {
-  "generatedAt": "2026-11-26T02:54:02.420Z",
+  "generatedAt": "2026-11-26T05:06:23.878Z",
   "version": 1,
   "source": "naver-game-lounge",
   "notices": [
+    {
+      "id": "8511169",
+      "category": "점검·업데이트",
+      "title": "[업데이트PV] 11월 26일(목) 신규 업데이트 내역 안내",
+      "date": "2026-11-26",
+      "url": "https://game.naver.com/lounge/Trickcal/board/detail/8511169",
+      "board": "공식 영상"
+    },
     {
       "id": "8507323",
       "category": "점검·업데이트",
@@ -177,14 +185,6 @@
       "board": "진행 이벤트",
       "startAt": "2026-11-19T11:00:00+09:00",
       "endAt": "2026-12-03T10:59:00+09:00"
-    },
-    {
-      "id": "8456365",
-      "category": "공지",
-      "title": "[안내] 족제비와토끼작가 공식 웹툰 휴재 안내",
-      "date": "2026-11-13",
-      "url": "https://game.naver.com/lounge/Trickcal/board/detail/8456365",
-      "board": "공지사항"
     }
   ],
   "coupons": [],
