@@ -1,8 +1,16 @@
 {
-  "generatedAt": "2026-11-26T10:09:53.676Z",
+  "generatedAt": "2026-11-27T07:22:22.089Z",
   "version": 1,
   "source": "naver-game-lounge",
   "notices": [
+    {
+      "id": "8515910",
+      "category": "공지",
+      "title": "[안내] 족제비와토끼작가 공식 웹툰 휴재 안내",
+      "date": "2026-11-27",
+      "url": "https://game.naver.com/lounge/Trickcal/board/detail/8515910",
+      "board": "공지사항"
+    },
     {
       "id": "8512297",
       "category": "쿠폰",
@@ -172,17 +180,6 @@
       "board": "진행 이벤트",
       "startAt": "2026-11-19T11:00:00+09:00",
       "endAt": "2026-12-03T10:59:00+09:00"
-    },
-    {
-      "id": "8475196",
-      "category": "이벤트",
-      "title": "[이벤트] 신규 픽업 사도 모집 진행 예정 안내(~12월 3일)",
-      "date": "2026-11-17",
-      "url": "https://game.naver.com/lounge/Trickcal/board/detail/8475196",
-      "board": "진행 이벤트",
-      "startAt": "2026-11-19T11:00:00+09:00",
-      "endAt": "2026-12-03T10:59:00+09:00",
-      "apostle": "아이리스"
     }
   ],
   "coupons": [
