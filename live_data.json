@@ -1,8 +1,18 @@
 {
-  "generatedAt": "2026-11-27T07:22:22.089Z",
+  "generatedAt": "2026-11-27T10:06:11.963Z",
   "version": 1,
   "source": "naver-game-lounge",
   "notices": [
+    {
+      "id": "8516317",
+      "category": "공지",
+      "title": "[안내] 에피드게임즈 AGF 2026 참여 안내",
+      "date": "2026-11-27",
+      "url": "https://game.naver.com/lounge/Trickcal/board/detail/8516317",
+      "board": "공지사항",
+      "startAt": "2026-12-04T00:00:00+09:00",
+      "endAt": "2026-12-06T23:59:00+09:00"
+    },
     {
       "id": "8515910",
       "category": "공지",
@@ -170,16 +180,6 @@
       "date": "2026-11-17",
       "url": "https://game.naver.com/lounge/Trickcal/board/detail/8475247",
       "board": "테마극장 PV"
-    },
-    {
-      "id": "8475208",
-      "category": "이벤트",
-      "title": "[이벤트] 신규 스펙타클 카드 뽑기 예정 안내(~12월 3일)",
-      "date": "2026-11-17",
-      "url": "https://game.naver.com/lounge/Trickcal/board/detail/8475208",
-      "board": "진행 이벤트",
-      "startAt": "2026-11-19T11:00:00+09:00",
-      "endAt": "2026-12-03T10:59:00+09:00"
     }
   ],
   "coupons": [
